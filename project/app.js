@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 app.listen(app.get('port'), function () {
-  console.log('Node.js/Express is listening on port ' + app.get('port'));
+  console.log('Node.js/Express is listening on http://localhost:' + app.get('port') + '/');
 });
 
 module.exports = app;
