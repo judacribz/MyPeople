@@ -4,7 +4,7 @@
 `npm install`
 
 ## Run:
-`nodemon`
+`nodemon`  
 open `http://localhost:3000` in browser
 
 
