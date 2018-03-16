@@ -1,42 +1,10 @@
 nav.navbar.navbar-default
-    .container-fluid
-        ul.nav.navbar-nav
-            li.active.dropdown
-                a.dropdown-toggle(data-toggle="dropdown" href="#")
-                    | Groups
-                    span.caret
-                ul.dropdown-menu
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
-            li.dropdown
-                a.dropdown-toggle(data-toggle="dropdown" href="#")
-                    | Channels
-                    span.caret
-                ul.dropdown-menu
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
-            li.dropdown
-                a.dropdown-toggle(data-toggle="dropdown" href="#")
-                    | Messages
-                    span.caret
-                ul.dropdown-menu
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
-                    li.divider(role="separator")
-                    li
-                        a(href="#")
+    ul.nav.navbar-nav
+        each path, name in {"Groups":'/group', "Channels":"/channel","Messages":"/"}
+            li.dropdown.col-xs-4.text-center
+                a.dropdown-toggle(data-toggle=".dropdown-menu")= name
+                span.caret
+                    ul.dropdown-menu.col-xs-12
+                        each listItem in ["coolGroup", "randgroup","tests"]
+                            li
+                                a(href=path).col-xs-12.text-center= listItem
