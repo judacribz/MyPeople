@@ -2,26 +2,6 @@ doctype html
 html(lang="en")
 	include partials/head.pug
 
-	body
-		.bottom-div
+	
 		
-			nav.navbar.navbar-inverse
-				.container-fluid
-					.navbar-header
-						a.navbar-brand(href='#') MyPeople
-
-			.inner-center-div
-				form
-					.input-group
-						input#email.form-control(type='email', name='email', placeholder='Email')
-						span.input-group-addon
-						i.glyphicon.glyphicon-user
-					.input-group
-						input#password.form-control(type='password', name='password', placeholder='Password')
-						span.input-group-addon
-						.glyphicon.glyphicon-lock
-					button.btn.btn-success(type='button') Login
-				button.btn.btn-link(type='button') Don't have an account? Click here!
-
-		
-		include partials/scripts.pug
+	include partials/scripts.pug
