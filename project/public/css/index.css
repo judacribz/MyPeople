@@ -21,3 +21,40 @@ a {
     border-radius: 10px;
     margin-top: 1em;
 }
+
+body {
+    background-color: #141452;
+}
+
+.inner-center-div {
+    background-color: #33CCFF;
+    height: 270px;
+    margin: 150px;
+}
+
+.bottom-div {
+    background-color: black;
+    height: 350px;
+}
+
+.input-group {
+    width: 450px;
+    margin-left: 295px;
+    padding-top: 10px;
+}
+
+form {
+    padding-top: 65px;
+}
+
+.btn-success {
+    margin-left: 295px;
+    margin-top: 10px;
+    width: 450px;
+}
+
+.btn-link {
+    color: black;
+    margin-left: 400px;
+    margin-top: 10px;
+}
