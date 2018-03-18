@@ -1,0 +1,66 @@
+body {
+    background-color: #141452;
+
+}
+.inner-center-div {
+    background-color: #33CCFF;
+    height: 270px;
+    margin: 150px;
+}
+
+.bottom-div {
+    background-color: black;
+    height: 350px;
+}
+
+.input-group {
+    width: 450px;
+    margin-left: 295px;
+    padding-top: 10px;
+}
+
+form {
+    padding-top: 65px;
+}
+
+.btn-success {
+    margin-left: 295px;
+    margin-top: 10px;
+    width: 450px;
+}
+
+.btn-link {
+    color: black;
+    margin-left: 400px;
+    margin-top: 10px;
+}
+#content{
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+#middle{
+  /*column-count: 2;*/
+  display: grid;
+  grid-template-columns: 150px auto;
+}
+
+#Members{
+  background-color: #333333;
+}
+#M{
+  color: white;
+}
+
+#chatArea{
+  display: grid;
+  grid-template-rows: auto 450px;
+}
+
+#attachments{
+  background-color: #b3b3b3
+  
+}
+#message{
+width: 500px;
+}
