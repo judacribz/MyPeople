@@ -7,6 +7,28 @@ html(lang="en")
 
 
 		//- include content here
+		#content
+			#middle
+				#Members.container-fluid
+					h4#M MEMBERS
+					ul#members.list-group
+						li.list-group-item DIKACHI
+						li.list-group-item MIRICAL
+						li.list-group-item SHARMAN
+						li
+				#chatArea
+					p Dikachi is quite awesome
+					p
+						| Cristiano Ronaldo dos Santos Aveiro GOIH, ComM (European Portuguese:
+					#bottom
+						#attachments
+							| TESTING TEXT.
+							| &euro;94 million (&pound;80 million).
+						form.form-inline(action='/action_page.php')
+							.form-group
+								label(for='comment') Comment:
+								textarea#comment.form-control(rows='5')
+								button.btn.btn-default(type='button') SEND
 
-		
+
 		include partials/scripts.pug
