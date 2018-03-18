@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css" type="text/css" />
     <title>Document</title>
 </head>
 
-
 <body>
-    <nav class="navbar navbar-default">
+  <div id = "content">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li class="active dropdown">
@@ -32,7 +33,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="active dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Channels
                         <span class="caret"></span>
                     </a>
@@ -50,7 +51,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li class="active dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages
                         <span class="caret"></span>
                     </a>
@@ -71,6 +72,48 @@
             </ul>
         </div>
     </nav>
+
+    <div id = "middle">
+      <div class="container-fluid" id = "Members">
+       <h4 id = "M">MEMBERS</h4>
+       <ul class="list-group" id = "members">
+         <li class="list-group-item">DIKACHI</li>
+         <li class="list-group-item">MIRICAL</li>
+         <li class="list-group-item">SHARMAN<li>
+       </ul>
+     </div>
+      <div id = "chatArea">
+        <p>Dikachi is quite awesome</p>
+        <p>Cristiano Ronaldo dos Santos Aveiro GOIH, ComM (European Portuguese:
+          [kɾiʃˈtjɐnu ʁoˈnaɫdu]; born 5 February 1985) is a Portuguese professional
+          footballer who plays as a forward for Spanish club Real Madrid and the
+          Portugal national team. Often considered the best player in the world
+          and widely regarded as one of the greatest of all time,[note 1] Ronaldo
+          has five Ballon d'Or awards,[note 2] the most for a European player and
+          is tied for most all-time. He is the first player in history to win four
+          European Golden Shoes. He has won 25 trophies in his career, including
+          ect of the most expensive association football transfer[note 3] when he
+          moved from Manchester United to Real Madrid in a transfer worth
+          €94 million (£80 million).
+        </p>
+
+        <div id = "bottom">
+          <div id = "attachments">TESTING TEXT.ect of the most expensive association football transfer[note 3] when he
+          moved from Manchester United to Real Madrid in a transfer worth
+          €94 million (£80 million).</div>
+          <form class="form-inline" action="/action_page.php">
+            <div class="form-group">
+              <label for="text"></label>
+              <input type="text" class="form-control" id="message">
+            </div>
+            <button type="button" class="btn btn-default">SEND</button>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
