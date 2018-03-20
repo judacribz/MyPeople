@@ -22,33 +22,34 @@ a {
     margin-top: 1em;
 }
 
-#content{
-  display: grid;
-  grid-template-rows: auto auto;
+#content {
+    display: grid;
+    grid-template-rows: auto auto;
 }
 
-#middle{
-  /*column-count: 2;*/
-  display: grid;
-  grid-template-columns: 150px auto;
+#middle {
+    /*column-count: 2;*/
+    display: grid;
+    grid-template-columns: 150px auto;
 }
 
-#Members{
-  background-color: #333333;
-}
-#M{
-  color: white;
+#Members {
+    background-color: #333333;
 }
 
-#chatArea{
-  display: grid;
-  grid-template-rows: auto 450px;
+#M {
+    color: white;
 }
 
-#attachments{
-  background-color: #b3b3b3
-  
+#chatArea {
+    display: grid;
+    grid-template-rows: auto 450px;
 }
-#message{
-width: 500px;
+
+#attachments {
+    background-color: #b3b3b3
+}
+
+#message {
+    width: 500px;
 }
