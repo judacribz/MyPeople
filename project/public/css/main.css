@@ -41,6 +41,7 @@ a {
     color: white;
 }
 
+#groupContent,
 #chatArea {
     display: grid;
     grid-template-rows: auto 450px;
