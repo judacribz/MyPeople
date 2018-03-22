@@ -1,17 +1,21 @@
 doctype html
 html(lang="en")
-	include partials/head
+	include partials/head.pug
 
 	body
-		include partials/navbar
+		include partials/navbar.pug
 
 
 		//- include content here
 		#content
 			#middle
-			
-				include partials/sidebar
-
+				#Members.container-fluid
+					h4#M MEMBERS
+					ul#members.list-group
+						li.list-group-item DIKACHI
+						li.list-group-item MIRICAL
+						li.list-group-item SHARMAN
+						li
 				#chatArea
 					p Dikachi is quite awesome
 					p
@@ -27,4 +31,4 @@ html(lang="en")
 								button.btn.btn-default(type='button') SEND
 
 
-		include partials/scripts
+		include partials/scripts.pug
