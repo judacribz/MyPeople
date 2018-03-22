@@ -1,13 +1,3 @@
-doctype html
-html(lang="en")
-	include partials/head
-
-	body
-		include partials/navbar
-
-		#content
-			#middle
-				include partials/sidebar
-			#chatArea
-		
-		include partials/scripts
+extends main
+block content_main
+	#chatArea
