@@ -9,9 +9,4 @@ router.get('/group', function (req, res) {
     });
 });
 
-// router.get('/group/:groupId', function (req, res) {     res.render('group', {
-//         title: req.params + ' | My People ',         groupList: [
-// "coolGroup", "randgroup", "tests"         ],         groupId: req.params });
-// })
-
 module.exports = router;

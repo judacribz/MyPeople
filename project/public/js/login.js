@@ -16,8 +16,7 @@ $(document).ready(function() {
 
     	auth.signInWithEmailAndPassword(email, password)
     	.then(function() {
-    		console.log("Welcome!");
-    		// Show specific user welcome page
+    		window.location = "/channel";
     	})
     	.catch(function(error) {
     		console.log("Incorrect email and/or password");
@@ -26,5 +25,23 @@ $(document).ready(function() {
     	});
     };
 
+    $('#email').keypress(function(e) {
+        if (e.which == 13) {
+            login();
+            return false;
+        }
+    });
+
+    $('#password').keypress(function(e) {
+        if(e.which == 13) {
+            login();
+            return false;
+        }
+    });
+
     $('#btnLogin').click(login);
+
+    $('#btnSignUp').click(function() {
+        window.location = "/signup";
+    });
 });

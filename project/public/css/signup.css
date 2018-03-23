@@ -1,0 +1,14 @@
+body {
+    background-color: #141452;
+}
+
+.inner-center-div {
+    background-color: #33CCFF;
+    height: 270px;
+    margin: 150px;
+}
+
+.bottom-div {
+    background-color: black;
+    height: 350px;
+}

@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/group'));
 app.use('/', require('./routes/channel'));
+app.use('/', require('./routes/signup'))
 
 app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on http://localhost:' + app.get('port') + '/');
