@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "prestart": "md data/database & start mongod --config data/mongod.conf",
-    "start": "node app",
-    "poststop": "mongo --eval 'db.getSiblingDB(\"admin\").shutdownServer()'"
+    "start": "nodemon app & node app",
+    "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",
