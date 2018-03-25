@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "prestart": "md data/database & start mongod --config data/mongod.conf",
+    "start": "node app",
+    "poststop": "mongo --eval 'db.getSiblingDB(\"admin\").shutdownServer()'"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "express": "^4.15.5",
     "express-session": "^1.15.6",
     "mongoose": "^5.0.11",
+    "opn": "^5.3.0",
     "pug": "^2.0.0",
     "uuid": "^3.2.1"
   },
