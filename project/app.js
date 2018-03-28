@@ -15,10 +15,10 @@ const group = require('./routes/group');
 const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
-
 var app = express();
-
+``
 app.set('port', process.env.PORT || 3000);
+const url = 'http://localhost:' + app.get('port') + '/';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,9 +36,10 @@ app.use('/group', group);
 app.use('/channel', channel);
 app.use('/signup', signup);
 
-var url = 'http://localhost:' + app.get('port') + '/';
 app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);
+
+  // opn(url);
 });
 
 mongoose.Promise = global.Promise;
@@ -81,9 +82,5 @@ var GroupSchema = new Schema({
   collection: 'groups'
 });
 var Group = mongoose.model('group', GroupSchema);
-
-
-
-opn(url);
 
 module.exports = app;
