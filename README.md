@@ -1,7 +1,7 @@
 # MyPeople
 
 ## Setup:
-`npm install -g nodemon` (if not installed already)
+`npm install -g nodemon` (if not installed already)  
 `npm install`  
 
 ## Run:
