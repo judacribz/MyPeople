@@ -60,7 +60,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var starCountRef = firebase.database().ref('groups/');
-starCountRef.on('value', function (snapshot) {
+starCountRef.on('child_added', function (snapshot) {
   console.log(snapshot.val());
 });
 
