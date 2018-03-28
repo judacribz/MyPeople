@@ -9,19 +9,21 @@ const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
 
+// require routes setup
 const routes = require('./routes');
 const index = require('./routes/index');
 const group = require('./routes/group');
 const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
+// helper functions setup
+const fb = require('./utilities/firebase')
+
 var app = express();
 
-var firebase = require("firebase");
-
-
 app.set('port', process.env.PORT || 3000);
-const url = 'http://localhost:' + app.get('port') + '/';
+app.set('host', "localhost")
+const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +36,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+// routes setup, add new route here and to routes directory
 app.use('/', index);
 app.use('/group', group);
 app.use('/channel', channel);
@@ -41,28 +44,11 @@ app.use('/signup', signup);
 
 app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);
-
   // opn(url);
 });
 
+fb.setupFirebase();
 
-var config = {
-  apiKey: "AIzaSyD7uRf5e4OpTiPMTdHmEA7RzhPa-lPFNrg",
-  authDomain: "mypeople-5d5e0.firebaseapp.com",
-  databaseURL: "https://mypeople-5d5e0.firebaseio.com",
-  projectId: "mypeople-5d5e0",
-  storageBucket: "mypeople-5d5e0.appspot.com",
-  messagingSenderId: "347198606661"
-};
-firebase.initializeApp(config);
-
-
-
-var database = firebase.database();
-var starCountRef = firebase.database().ref('groups/');
-starCountRef.on('child_added', function (snapshot) {
-  console.log(snapshot.val());
-});
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/myPeople');
