@@ -2,10 +2,11 @@
 
 ## Setup:
 `npm install`
+`npm install -g nodemon`
 
 ## Run:
-`nodemon`  
-open `http://localhost:3000` in browser
+`npm start`  
+This will start mongo, set db path to `data/database`, and run `nodemon app`
 
 
 ## [Design](design/):

@@ -9,6 +9,13 @@ const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
 
+const routes = require('./routes');
+const index = require('./routes/index');
+const group = require('./routes/group');
+const channel = require('./routes/channel');
+const signup = require('./routes/signup');
+
+
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -24,10 +31,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use('/', require('./routes/index'));
-app.use('/', require('./routes/group'));
-app.use('/', require('./routes/channel'));
-app.use('/', require('./routes/signup'))
+app.use('/', index);
+app.use('/group', group);
+app.use('/channel', channel);
+app.use('/signup', signup);
 
 var url = 'http://localhost:' + app.get('port') + '/';
 app.listen(app.get('port'), function () {

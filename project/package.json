@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "prestart": "md data/database & start mongod --config data/mongod.conf",
-    "start": "nodemon app & node app",
+    "prestart": "npm run-script build & start mongod --config data/mongod.conf",
+    "build": "mkdirp data/database",
+    "start": "nodemon app",
     "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
@@ -21,6 +22,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "mkdirp": "^0.5.1",
     "nodemon": "^1.17.2"
   },
   "nodemonConfig": {
