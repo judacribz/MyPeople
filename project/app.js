@@ -16,7 +16,10 @@ const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
 var app = express();
-``
+
+var firebase = require("firebase");
+
+
 app.set('port', process.env.PORT || 3000);
 const url = 'http://localhost:' + app.get('port') + '/';
 
@@ -40,6 +43,25 @@ app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);
 
   // opn(url);
+});
+
+
+var config = {
+  apiKey: "AIzaSyD7uRf5e4OpTiPMTdHmEA7RzhPa-lPFNrg",
+  authDomain: "mypeople-5d5e0.firebaseapp.com",
+  databaseURL: "https://mypeople-5d5e0.firebaseio.com",
+  projectId: "mypeople-5d5e0",
+  storageBucket: "mypeople-5d5e0.appspot.com",
+  messagingSenderId: "347198606661"
+};
+firebase.initializeApp(config);
+
+
+
+var database = firebase.database();
+var starCountRef = firebase.database().ref('groups/');
+starCountRef.on('value', function (snapshot) {
+  console.log(snapshot.val());
 });
 
 mongoose.Promise = global.Promise;
