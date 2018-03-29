@@ -14,9 +14,8 @@ body {
 }
 
 .input-group {
-    width: 450px;
-    margin-left: 295px;
-    padding-top: 10px;
+    min-width: 20em;
+    margin: 1em 2em;
 }
 
 form {
@@ -24,13 +23,12 @@ form {
 }
 
 .btn-success {
-    margin-left: 295px;
-    margin-top: 10px;
-    width: 450px;
+    width: 10em;
+    margin: 1em 2em;
 }
 
 .btn-link {
     color: black;
-    margin-left: 400px;
-    margin-top: 10px;
+    width: 5em;
+    margin: 1em 2em;
 }
