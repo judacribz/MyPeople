@@ -1,12 +1,12 @@
 {
-  "name": "MyPeople",
+  "name": "mypeople",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script build & start mongod --config data/mongod.conf",
-    "build": "mkdirp data/database",
-    "start": "nodemon app",
+    "prestart": "npm run-script build && start mongod || mongod -f config/mongod.conf &",
+    "build": "mkdirp data/database data/logs",
+    "start": "sleep 1 && nodemon app",
     "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
