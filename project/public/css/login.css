@@ -5,30 +5,28 @@ body {
 .inner-center-div {
     background-color: #33CCFF;
     height: 270px;
-    margin: 150px;
+    margin: 360px auto;
+    overflow: auto;
 }
 
 .bottom-div {
     background-color: black;
-    height: 350px;
-}
-
-.input-group {
-    min-width: 20em;
-    margin: 1em 2em;
+    height: 550px;
 }
 
 form {
     padding-top: 65px;
+    width: 50%;
+    margin: 1em auto;
 }
 
 .btn-success {
-    width: 10em;
-    margin: 1em 2em;
+    width: 68.5em;
+    margin: 1em 0em auto;
 }
 
 .btn-link {
     color: black;
-    width: 5em;
-    margin: 1em 2em;
+    display: block;
+    margin: 1em 60em auto;
 }

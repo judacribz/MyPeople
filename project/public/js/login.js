@@ -8,9 +8,9 @@ $(document).ready(function () {
         messagingSenderId: "347198606661"
     };
     firebase.initializeApp(config);
-    var cobaChat = new firebase('https://mypeople-5d5e0.firebaseio.com/groups');
-
-    console.log(cobaChat);
+    
+    /* var cobaChat = new firebase('https://mypeople-5d5e0.firebaseio.com/groups');
+    console.log(cobaChat); */
 
     var login = function () {
         var email = $('#email').val();
