@@ -5,10 +5,27 @@ body {
 .inner-center-div {
     background-color: #33CCFF;
     height: 270px;
-    margin: 150px;
+    margin: 360px auto;
+    overflow: auto;
 }
 
 .bottom-div {
     background-color: black;
-    height: 350px;
+    height: 560px;
+}
+
+form {
+	padding-top: 13px;
+    width: 50%;
+    margin: 1em auto;
+}
+
+.btn-success {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.btn-danger {
+	width: 50%;
+	margin: 0 auto;
 }

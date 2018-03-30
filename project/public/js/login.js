@@ -18,27 +18,17 @@ $(document).ready(function () {
         var password = $('#password').val();
         var auth = firebase.auth();
 
-        auth.signInWithEmailAndPassword(email, password)
-            .then(function () {
-                window.location = "/channel";
-            })
-            .catch(function (error) {
-                console.log("Incorrect email and/or password");
-                $('#password').val("");
-                // Text field error, if password is incorrect
-            });
+        auth.signInWithEmailAndPassword(email, password).then(function () {
+            window.location = "/channel";
+        }).catch(function (error) {
+            console.log(error.message);
+            $('#password').val("");
+            // Text field error, if password is incorrect
+        });
     };
 
-    /* Login the user if the enter key is pressed from the email field */
-    $('#email').keypress(function (e) {
-        if (e.which == 13) {
-            login();
-            return false;
-        }
-    });
-
-    /* Login the user if the enter key is pressed from the password field */
-    $('#password').keypress(function (e) {
+    /* Login the user if the enter key is pressed */
+    $(document).keypress(function (e) {
         if (e.which == 13) {
             login();
             return false;

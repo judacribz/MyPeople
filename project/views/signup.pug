@@ -10,5 +10,16 @@ html(lang="en")
 					.navbar-header
 						a.navbar-brand(href='#') MyPeople
 			.inner-center-div
+				form
+					.form-group
+						input#username.form-control(type='username', placeholder='Enter username')
+					.form-group
+						input#email.form-control(type='email', placeholder='Enter email')
+					.form-group
+						input#password.form-control(type='password', placeholder='Enter password')
+					.form-group
+						input#confirmPassword.form-control(type='password', placeholder='Confirm password')
+					button#btnSignUp.btn.btn-success(type='button') Sign Up
+					button#btnCancel.btn.btn-danger(type='button') Cancel
 		
 	include partials/scripts
