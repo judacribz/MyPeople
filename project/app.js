@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const compression = require('compression');
+const helmet = require('helmet');
 const uuid = require('uuid/v1');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -21,6 +23,8 @@ const fb = require('./utilities/firebase')
 
 var app = express();
 
+app.use(helmet());
+
 app.set('port', process.env.PORT || 3000);
 app.set('host', "localhost")
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
@@ -29,8 +33,11 @@ const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//Compress all routes
+app.use(compression());
+
 // middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(app.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
