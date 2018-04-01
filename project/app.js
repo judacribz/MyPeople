@@ -19,14 +19,14 @@ const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
 // helper functions setup
-const fb = require('./utilities/firebase')
+const fb = require('./utilities/firebase');
 
 var app = express();
 
 app.use(helmet());
 
 app.set('port', process.env.PORT || 3000);
-app.set('host', "localhost")
+app.set('host', "localhost");
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 
 // view engine setup
