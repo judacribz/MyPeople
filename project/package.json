@@ -1,12 +1,16 @@
 {
   "name": "mypeople",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chatting app for any purpose!",
+  "repository": {
+    "url": "https://github.com/xXGirl-Computer-ScientistXx/MyPeople.git"
+  },
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script build && start mongod || mongod -f config/mongod.conf &",
-    "build": "mkdirp data/database data/logs",
-    "start": "sleep 1 && nodemon app",
+    "prestart": "npm run-script mkdirs && npm run-script mongo &",
+    "mkdirs": "mkdirp data/database data/logs",
+    "mongo": "mongod || start mongod -f ./config/mongod.conf",
+    "start": "nodemon app",
     "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
