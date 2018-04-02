@@ -1,0 +1,61 @@
+a {
+    color: #00B7FF;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav {
+    float: none;
+    background-color: black;
+    color: white;
+}
+
+.navbar-nav li .dropdown-toggle {
+    width: 10em;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #000;
+    border: 2px #FFF solid;
+    border-radius: 10px;
+    margin-top: 1em;
+}
+
+#content {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+#middle {
+    /*column-count: 2;*/
+    display: grid;
+    grid-template-columns: 150px auto;
+}
+
+#Members {
+    background-color: #333333;
+}
+
+#M {
+    color: white;
+}
+
+#groupContent,
+#chatAream {
+    display: grid;
+    grid-template-rows: auto 450px;
+  }
+
+#chatAream {
+  background-color: white;
+}
+
+#attachments {
+    background-color: #b3b3b3
+}
+
+#message {
+    width: 500px;
+
+}

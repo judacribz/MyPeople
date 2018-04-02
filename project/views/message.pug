@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  include partials/head.pug
+  body
+    include partials/navbar.pug
+    #content
+      #middle
+        #Members.container-fluid
+          h4#M MEMBERS
+          ul#members.list-group
+            li.list-group-item DIKACHI
+            li.list-group-item MIRICAL
+            li.list-group-item SHARMAN
+            li.list-group-item TESTCHECK
+        #chatAream
+          p Dikachi is quite awesome
+          p Cristiano Ronaldo dos Santos Aveiro GOIH, ComM (European Portuguese:
+          #bottom
+            #attachments
+              | TESTING TEXT.
+              | €94 million (£80 million).
+            form.form-inline(action='/action_page.php')
+              .form-group
+                form(action='/action_page.php')
+                  textarea(name='message', style='width:1500px; height:100px;')
+                  br
+                  input(type='submit')
+    include partials/scripts.pug

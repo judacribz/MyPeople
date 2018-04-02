@@ -15,3 +15,8 @@ nav.navbar.navbar-default
                                 each listItem in channelList
                                     li     
                                         a(href=path).col-xs-12.text-center.channelList= listItem
+                        else if name == "Messages"
+                            if channelList !== undefined
+                                each listItem in channelList
+                                    li     
+                                      a(href=path).col-xs-12.text-center.channelList= listItem

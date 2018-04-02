@@ -24,15 +24,12 @@ html(lang="en")
 						#attachments
 							| TESTING TEXT.
 							| &euro;94 million (&pound;80 million).
-						form.form-inline(method="post",action="/channel")
-							label(class="control-label col-sm-2",for="message") Enter Message:
-							div(class="col-sm-8 form-group")
-								textarea(type="text",
-									id="message",
-									name="message",
-									class="form-control")
-							div(class="col-sm-offset-2 col-sm-2")
-								button(type="submit", class="btn btn-primary") Check
+						form.form-inline(action='/action_page.php')
+							.form-group
+								form(action='/action_page.php')
+									textarea(name='message', style='width:1500px; height:100px;')
+									br
+									input(type='submit')
 
 
 		include partials/scripts.pug
