@@ -5,9 +5,6 @@
     "node": "9.9.0"
   },
   "description": "Chatting app for any purpose!",
-  "repository": {
-    "url": "https://github.com/xXGirl-Computer-ScientistXx/MyPeople.git"
-  },
   "main": "app.js",
   "scripts": {
     "prestart": "npm run-script mkdirs && npm run-script mongo &",
