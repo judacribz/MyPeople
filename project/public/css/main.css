@@ -41,11 +41,10 @@ a {
     color: white;
 }
 
-/* #groupContent,
-#chatArea {
+#groupContent {
     display: grid;
     grid-template-rows: auto 450px;
-} */
+}
 
 #attachments {
     background-color: #b3b3b3

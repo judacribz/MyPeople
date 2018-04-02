@@ -17,7 +17,6 @@ const index = require('./routes/index');
 const group = require('./routes/group');
 const channel = require('./routes/channel');
 const signup = require('./routes/signup');
-const message = require('./routes/message');
 
 // helper functions setup
 const fb = require('./utilities/firebase');
@@ -49,7 +48,6 @@ app.use('/', index);
 app.use('/group', group);
 app.use('/channel', channel);
 app.use('/signup', signup);
-app.use('/message', message);
 
 app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);
