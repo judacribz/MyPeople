@@ -8,8 +8,6 @@ router.get('/', function (req, res) {
         title: 'CHANNEL_NAME | My People',
         channelList: ["labs", "randChannel", "tests", "good"]
     });
-
-    fb.getChannelUpdates();
 });
 
 /* GET home page. */

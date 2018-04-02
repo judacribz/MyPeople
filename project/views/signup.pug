@@ -1,7 +1,8 @@
 doctype html
 html(lang="en")
-	
+
 	include partials/head
+	script(type='text/javascript', src='js/signup.js')
 
 	.body
 		.bottom-div
@@ -21,5 +22,5 @@ html(lang="en")
 						input#confirmPassword.form-control(type='password', placeholder='Confirm password')
 					button#btnSignUp.btn.btn-success(type='button') Sign Up
 					button#btnCancel.btn.btn-danger(type='button') Cancel
-		
+
 	include partials/scripts

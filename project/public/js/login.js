@@ -1,16 +1,4 @@
 $(document).ready(function () {
-    var config = {
-        apiKey: "AIzaSyD7uRf5e4OpTiPMTdHmEA7RzhPa-lPFNrg",
-        authDomain: "mypeople-5d5e0.firebaseapp.com",
-        databaseURL: "https://mypeople-5d5e0.firebaseio.com",
-        projectId: "mypeople-5d5e0",
-        storageBucket: "mypeople-5d5e0.appspot.com",
-        messagingSenderId: "347198606661"
-    };
-    firebase.initializeApp(config);
-    
-    /* var cobaChat = new firebase('https://mypeople-5d5e0.firebaseio.com/groups');
-    console.log(cobaChat); */
 
     /* Handles the login */
     var login = function () {
@@ -45,7 +33,7 @@ $(document).ready(function () {
 
     /* Check if the authentication state has been changed, either if the user is logged in or not */
     firebase.auth().onAuthStateChanged(firebaseUser => {
-        if(firebaseUser) {
+        if (firebaseUser) {
             console.log(firebaseUser + " is logged in.");
         } else {
             console.log("No one logged in.");

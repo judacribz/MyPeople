@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const compression = require('compression');
+const helmet = require('helmet');
 const uuid = require('uuid/v1');
 const session = require('express-session');
 const mongoose = require('mongoose');
@@ -15,19 +17,25 @@ const index = require('./routes/index');
 const group = require('./routes/group');
 const channel = require('./routes/channel');
 const signup = require('./routes/signup');
+const message = require('./routes/message');
 
 // helper functions setup
-const fb = require('./utilities/firebase')
+const fb = require('./utilities/firebase');
 
 var app = express();
 
+app.use(helmet());
+
 app.set('port', process.env.PORT || 3000);
-app.set('host', "localhost")
+app.set('host', "localhost");
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+//Compress all routes
+app.use(compression());
 
 // middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -41,6 +49,7 @@ app.use('/', index);
 app.use('/group', group);
 app.use('/channel', channel);
 app.use('/signup', signup);
+app.use('/message', message);
 
 app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);

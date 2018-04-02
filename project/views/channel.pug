@@ -1,6 +1,9 @@
 doctype html
 html(lang="en")
 	include partials/head.pug
+	
+	script(src='https://cdn.firebase.com/js/client/2.4.0/firebase.js')
+	script(type='text/javascript', src='js/channel.js')
 
 	body
 		include partials/navbar.pug
@@ -17,19 +20,15 @@ html(lang="en")
 						li.list-group-item SHARMAN
 						li
 				#chatArea
-					p Dikachi is quite awesome
-					p
-						| Cristiano Ronaldo dos Santos Aveiro GOIH, ComM (European Portuguese:
 					#bottom
 						#attachments
 							| TESTING TEXT.
 							| &euro;94 million (&pound;80 million).
-						form.form-inline(action='/action_page.php')
+						form.form-inline(method="post",action="/channel")
 							.form-group
 								form(action='/action_page.php')
-									textarea(name='message', style='width:1500px; height:100px;')
+									textarea(id="message",name='message',class="form-control", style='width:1500px; height:100px;')
 									br
 									input(type='submit')
-
 
 		include partials/scripts.pug
