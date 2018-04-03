@@ -7,11 +7,13 @@
   "description": "Chatting app for any purpose!",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script mkdirs && npm run-script mongo &",
+    "prestart": "npm run-script mkdirs && npm run-script start_mongo &",
     "mkdirs": "mkdirp data/database data/logs",
-    "mongo": "mongod || start mongod -f ./config/mongod.conf",
+    "start_mongo": "start mongod -f ./config/mongod.conf || mongod -f ./config/mongod.conf",
     "start": "nodemon app",
-    "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    "stop": "npm run-script stop_mongo",
+    "poststop": "npm run-script stop_mongo",
+    "stop_mongo": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",
