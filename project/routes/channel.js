@@ -6,6 +6,7 @@ var router = express.Router();
 router.get('/', function (req, res) {
     res.render('channel', {
         title: 'CHANNEL_NAME | My People',
+        groupList: ["coolGroup", "randgroup", "tests"],
         channelList: ["labs", "randChannel", "tests", "good"]
     });
 });
