@@ -10,6 +10,7 @@ const assert = require('assert');
 const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
+const build = require('./build.js');
 
 // require routes setup
 const routes = require('./routes');
@@ -22,6 +23,9 @@ const signup = require('./routes/signup');
 const fb = require('./utilities/firebase');
 
 var app = express();
+
+// start mongod in background
+build();
 
 app.use(helmet());
 

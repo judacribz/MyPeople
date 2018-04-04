@@ -7,11 +7,10 @@
   "description": "Chatting app for any purpose!",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script mkdirs && node build &",
+    "prestart": "npm run-script mkdirs",
     "mkdirs": "mkdirp data/database data/logs",
     "start": "nodemon app",
     "stop": "npm run-script stop_mongo",
-    "poststop": "npm run-script stop_mongo",
     "stop_mongo": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
