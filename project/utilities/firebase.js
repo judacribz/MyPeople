@@ -1,7 +1,5 @@
 const firebase = require("firebase");
 const fbConfig = require('../config/firebase.config');
-const cheerio = require('cheerio');
-const $ = cheerio.load('<div id="chatArea">...</div>');
 
 module.exports = {
     setupFirebase: function () {
