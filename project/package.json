@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "prestart": "npm run-script mkdirs",
-    "mkdirs": "mkdirp data/database data/logs",
+    "mkdirs": "mkdirp data/database",
     "start": "nodemon app",
     "stop": "npm run-script stop_mongo",
     "stop_mongo": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
