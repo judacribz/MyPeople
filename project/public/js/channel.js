@@ -5,5 +5,6 @@ $(document).ready(function () {
 	myFirebase.limitToLast(10).on('child_added', function (snapshot) {
 		$("#chatArea").append($(document.createElement("p")).text("Joe says: " + snapshot.val().content));
 		console.log(snapshot.val());
+		console.log(user_info);
 	});
 });
