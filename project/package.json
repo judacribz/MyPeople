@@ -18,7 +18,6 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.18.2",
-    "cheerio": "1.0.0-rc.2",
     "child_process": "1.0.2",
     "compression": "1.7.2",
     "express": "4.16.3",
@@ -26,6 +25,7 @@
     "firebase": "4.12.1",
     "helmet": "3.12.0",
     "mongoose": "5.0.12",
+    "pug": "2.0.3",
     "opn": "5.3.0",
     "uuid": "3.2.1"
   },
@@ -33,7 +33,6 @@
     "mkdirp": "^0.5.1",
     "nodemon": "^1.17.2",
     "os": "0.1.1",
-    "pug": "2.0.3",
     "util": "0.10.3"
   },
   "nodemonConfig": {

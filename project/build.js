@@ -1,5 +1,5 @@
 const sys = require('util');
-const exec = require('child_process').exec;
+const spawn = require('child_process').spawn;
 const os = require('os');
 
 const mongoConfig = "./config/mongod_win.conf";
@@ -13,17 +13,32 @@ function buildEnv() {
         logEnv('Mac', startMongo);
     } else if (os.type() === 'Windows_NT') {
         logEnv('Windows', startMongoWin);
-    } else
+    } else 
         throw new Error("Unsupported OS found: " + os.type());
-}
+    }
 
 function logEnv(osType, cmd) {
     console.log(osType + " environment detected.");
-    exec(cmd + " -f " + mongoConfig, puts);
+    var mongoOut = spawn(cmd, [], {f: mongoConfig});
+    mongoOut
+        .stdout
+        .on('data', (data) => {
+            console.log(`stdout: ${data}`);
+        });
+
+    mongoOut
+        .stderr
+        .on('data', (data) => {
+            console.log(`stderr: ${data}`);
+        });
 }
 
 function puts(error, stdout, stderr) {
     console.log(stdout);
 }
 
-module.exports = buildEnv;
+const ls = spawn('ls', ['-lh', '/usr']);
+
+module.exports = {
+    build: buildEnv
+};

@@ -10,7 +10,6 @@ const assert = require('assert');
 const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
-const build = require('./build.js');
 
 // require routes setup
 const routes = require('./routes');
@@ -20,12 +19,16 @@ const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
 // helper functions setup
+const b = require('./build');
 const fb = require('./utilities/firebase');
 
-var app = express();
+// setup firebase
+fb.setupFirebase();
 
 // start mongod in background
-build();
+b.build();
+
+var app = express();
 
 app.use(helmet());
 
@@ -42,9 +45,7 @@ app.use(compression());
 
 // middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // routes setup, add new route here and to routes directory
@@ -57,9 +58,6 @@ app.listen(app.get('port'), function () {
   console.log('Node.js/Express is listening on ' + url);
   // opn(url);
 });
-
-fb.setupFirebase();
-
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/myPeople');
@@ -83,23 +81,23 @@ var userSchema = new Schema({
   },
   email: String,
   usercontacts: [String]
-}, {
-  collection: 'users'
-});
+}, {collection: 'users'});
 var User = mongoose.model('user', userSchema);
 
 var GroupSchema = new Schema({
-  channels: [{
-    members: String,
-    messages: [{
-      username: String,
-      content: String,
-      timestamp: String
-    }]
-  }]
-}, {
-  collection: 'groups'
-});
+  channels: [
+    {
+      members: String,
+      messages: [
+        {
+          username: String,
+          content: String,
+          timestamp: String
+        }
+      ]
+    }
+  ]
+}, {collection: 'groups'});
 var Group = mongoose.model('group', GroupSchema);
 
 module.exports = app;
