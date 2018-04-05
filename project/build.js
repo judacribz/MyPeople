@@ -3,11 +3,12 @@ const spawn = require('child_process').spawn;
 const exec = require('child_process').exec;
 const os = require('os');
 
-const mongoConfig = "./config/mongod_win.conf";
+const mongoConfig = "./config/mongod.conf";
 const startMongo = "mongod";
 const startMongoWin = "start " + startMongo;
 
-function buildEnv() {
+// setup for how to run mongo fore each env
+function setupMongo() {
     if (os.type() === 'Linux') {
         logEnv('Linux', startMongo);
     } else if (os.type() === 'Darwin') {
@@ -18,12 +19,13 @@ function buildEnv() {
         throw new Error("Unsupported OS found: " + os.type());
 }
 
+// runs mongodb server for each env`
 function logEnv(osType, cmd) {
     console.log(osType + " environment detected.");
 
     switch (osType) {
         case "Windows":
-            exec(cmd + " -f " + mongoConfig, puts);
+            exec(cmd + " -f " + mongoConfig, err);
             break;
 
         default:
@@ -45,12 +47,10 @@ function logEnv(osType, cmd) {
     }
 }
 
-function puts(error, stdout, stderr) {
+function err(error, stdout, stderr) {
     console.log(stdout);
 }
 
-const ls = spawn('ls', ['-lh', '/usr']);
-
 module.exports = {
-    build: buildEnv
+    setupMongo: setupMongo
 };

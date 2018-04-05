@@ -2,6 +2,8 @@ const firebase = require("firebase");
 const fbConfig = require('../config/firebase.config');
 
 module.exports = {
+    firebase: firebase,
+
     setupFirebase: function () {
         firebase.initializeApp(fbConfig);
     },
@@ -11,14 +13,15 @@ module.exports = {
             .database()
             .ref('groups/HackerGroup-2018/events/messages/');
 
-        var email = 'joe@joe.com';
-        firebase
-            .auth()
-            .onAuthStateChanged(function (user) {
-                if (user) {
-                    email = user.email;
-                }
-            });
+        // TODO: change to use username stored in database based on current users uid/email
+        var auth = firebase.auth();
+        var user = auth.currentUser;
+        console.log(firebase.auth());
+        if (user) {
+            email = user.email;
+        } else {
+            email = "joe@joe.com";
+        }
 
         var updates = {};
         updates[Date.now()] = {

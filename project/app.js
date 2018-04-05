@@ -19,19 +19,20 @@ const channel = require('./routes/channel');
 const signup = require('./routes/signup');
 
 // helper functions setup
-const b = require('./build');
 const fb = require('./utilities/firebase');
+const build = require('./build');
 
-// setup firebase
+// setup firebase and mongo in background
 fb.setupFirebase();
+build.setupMongo();
 
-// start mongod in background
-b.build();
-
+// It begins!
 var app = express();
 
+// protect from attacks
 app.use(helmet());
 
+// set port and host
 app.set('port', process.env.PORT || 3000);
 app.set('host', "localhost");
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
@@ -45,10 +46,17 @@ app.use(compression());
 
 // middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(bodyParser.json());
 
-// routes setup, add new route here and to routes directory
+/* 
+ * Routes Setup
+ * ============
+ * add route here when adding new pages 
+ * add the page path at the top of this file
+ */
 app.use('/', index);
 app.use('/group', group);
 app.use('/channel', channel);
@@ -81,23 +89,23 @@ var userSchema = new Schema({
   },
   email: String,
   usercontacts: [String]
-}, {collection: 'users'});
+}, {
+  collection: 'users'
+});
 var User = mongoose.model('user', userSchema);
 
 var GroupSchema = new Schema({
-  channels: [
-    {
-      members: String,
-      messages: [
-        {
-          username: String,
-          content: String,
-          timestamp: String
-        }
-      ]
-    }
-  ]
-}, {collection: 'groups'});
+  channels: [{
+    members: String,
+    messages: [{
+      username: String,
+      content: String,
+      timestamp: String
+    }]
+  }]
+}, {
+  collection: 'groups'
+});
 var Group = mongoose.model('group', GroupSchema);
 
 module.exports = app;
