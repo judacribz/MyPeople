@@ -24,9 +24,13 @@ const fb = require('./utilities/firebase');
 
 var app = express();
 
-// start mongod in background
-build();
+// setup firebase config
+fb.setupFirebase();
 
+// start mongod in background
+build()
+
+// protect website
 app.use(helmet());
 
 app.set('port', process.env.PORT || 3000);
@@ -37,7 +41,7 @@ const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-//Compress all routes
+//Compress all routes for faster deployment
 app.use(compression());
 
 // middleware
@@ -58,7 +62,6 @@ app.listen(app.get('port'), function () {
   // opn(url);
 });
 
-fb.setupFirebase();
 
 
 mongoose.Promise = global.Promise;
