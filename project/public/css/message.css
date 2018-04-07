@@ -57,5 +57,9 @@ a {
 
 #message {
     width: 500px;
+}
 
+#bottomm {
+  position: fixed;
+  bottom: 0;
 }

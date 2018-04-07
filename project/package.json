@@ -7,11 +7,12 @@
   "description": "Chatting app for any purpose!",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script mkdirs",
-    "mkdirs": "mkdirp data/database data/logs",
+    "prestart": "npm run mkdirs & npm run mongod &",
+    "mkdirs": "mkdirp data/database",
+    "mongod": "node build",
     "start": "nodemon app",
-    "stop": "npm run-script stop_mongo",
-    "stop_mongo": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\"",
+    "poststop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "firebase": "4.12.1",
     "helmet": "3.12.0",
     "mongoose": "5.0.12",
+    "pug": "2.0.3",
     "opn": "5.3.0",
     "uuid": "3.2.1"
   },
@@ -32,7 +34,6 @@
     "mkdirp": "^0.5.1",
     "nodemon": "^1.17.2",
     "os": "0.1.1",
-    "pug": "2.0.3",
     "util": "0.10.3"
   },
   "nodemonConfig": {
