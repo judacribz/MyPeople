@@ -15,10 +15,14 @@ module.exports = {
         // TODO: change to use username stored in database based on current users uid/email
         console.log(firebase.auth());
 
+        var displayName;
+        user.providerData.forEach(profile => {
+            displayName = profile.displayName;
+        });
         var updates = {};
         updates[user.uid] = {
             email: user.email,
-            username: username
+            username: displayName //username
         };
         users.update(updates);
     },

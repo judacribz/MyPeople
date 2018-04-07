@@ -21,12 +21,15 @@ router.post('/', function (req, res) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
         res.redirect('/channel');
 
-        /* Update the new user profile with the display name typed in by the user */
         user.updateProfile({
             displayName: username
+        }).then(function () {
+            fb.fbPushUser(user, username);
+        }, function (error) {
+            console.log(error);
         });
 
-        fb.fbPushUser(user, username);
+
     }).catch(function (error) {
         console.log(error.message);
     });
