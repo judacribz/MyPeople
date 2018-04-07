@@ -1,26 +1,40 @@
 doctype html
 html(lang="en")
-
 	include partials/head
 	script(type='text/javascript', src='js/login.js')
+	link(type='text/css', rel="stylesheet", href="css/login.css")
 
-	.body
-		.bottom-div
+	body
+		.top-div
 			nav.navbar.navbar-inverse
 				.container-fluid
 					.navbar-header
-						a.navbar-brand(href='#') MyPeople
-			.inner-center-div
-				form
-					.input-group
-						input#email.form-control(type='email', name='email', placeholder='Email')
-						span.input-group-addon
-							i.glyphicon.glyphicon-user
-					.input-group
-						input#password.form-control(type='password', name='password', placeholder='Password')
-						span.input-group-addon
-							i.glyphicon.glyphicon-lock
-					button#btnLogin.btn.btn-success(type='button') Login
+						a.navbar-brand(href='/') MyPeople
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='/signup')
+								span.glyphicon.glyphicon-user
+								| Sign Up
+						li(method="post",action="/")
+							a(href='/')
+								span.glyphicon.glyphicon-log-in
+								| Login
+			p
+				i MyPeople
+
+		.inner-center-div
+			p
+				i Sign in to your workspace
+			form(method="post",action="/")
+				.input-group
+					input#email.form-control(type='email', name='email', placeholder='Email')
+					span.input-group-addon
+						i.glyphicon.glyphicon-user
+				.input-group
+					input#password.form-control(type='password', name='password', placeholder='Password')
+					span.input-group-addon
+						i.glyphicon.glyphicon-lock
+				button#btnLogin.btn.btn-success(type='submit') Login
 				button#btnSignUp.btn.btn-link(type='button') Don't have an account? Click here!
 
 	include partials/scripts

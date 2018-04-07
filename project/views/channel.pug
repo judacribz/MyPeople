@@ -2,7 +2,6 @@ doctype html
 html(lang="en")
 	include partials/head.pug
 	
-	script(src='https://cdn.firebase.com/js/client/2.4.0/firebase.js')
 	script(type='text/javascript', src='js/channel.js')
 
 	body
@@ -20,6 +19,7 @@ html(lang="en")
 						li.list-group-item SHARMAN
 						li
 				#chatArea
+<<<<<<< HEAD
 			#bottom
 				#attachments
 					| TESTING TEXT.
@@ -31,3 +31,15 @@ html(lang="en")
 							br
 							input(type='submit')
 include partials/scripts.pug
+=======
+					#bottom
+						#attachments
+							| TESTING TEXT.
+							| &euro;94 million (&pound;80 million).
+						form.form-inline(method="post",action="/channel")
+							.form-group
+								textarea(id="message",name='message', style='width:1500px; height:100px;')
+								br
+								input(type='submit')
+		include partials/scripts.pug
+>>>>>>> 7d072736f7cf2b90e5ba058c12a0c2b3eec7a815

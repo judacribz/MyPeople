@@ -10,26 +10,20 @@ const assert = require('assert');
 const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
-const build = require('./build.js');
-
-// require routes setup
-const routes = require('./routes');
-const index = require('./routes/index');
-const group = require('./routes/group');
-const channel = require('./routes/channel');
-const signup = require('./routes/signup');
-const message = require('./routes/message');
 
 // helper functions setup
 const fb = require('./utilities/firebase');
 
+// setup firebase and mongo in background
+fb.setupFirebase();
+
+// It begins!
 var app = express();
 
-// start mongod in background
-build();
-
+// protect from attacks
 app.use(helmet());
 
+// set port and host
 app.set('port', process.env.PORT || 3000);
 app.set('host', "localhost");
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
@@ -48,23 +42,23 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// routes setup, add new route here and to routes directory
+/*
+ * Routes Setup
+ * ============
+ * add route here when adding new pages
+ * add the page path at the top of this file
+ */
+// require routes setup
+const routes = require('./routes');
+const index = require('./routes/index');
+const signup = require('./routes/signup');
+const group = require('./routes/group');
+const channel = require('./routes/channel');
+
 app.use('/', index);
+app.use('/signup', signup);
 app.use('/group', group);
 app.use('/channel', channel);
-app.use('/signup', signup);
-app.use('/message', message);
-
-app.listen(app.get('port'), function () {
-  console.log('Node.js/Express is listening on ' + url);
-  // opn(url);
-});
-
-fb.setupFirebase();
-
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/myPeople');
 
 app.use(session({
   genid: function (request) {
@@ -75,6 +69,14 @@ app.use(session({
   //cookie: {secure: true},
   secret: 'apollo slackware prepositional expectations'
 }));
+
+app.listen(app.get('port'), function () {
+  console.log('Node.js/Express is listening on ' + url);
+  // opn(url);
+});
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/myPeople');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
