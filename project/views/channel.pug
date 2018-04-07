@@ -1,45 +1,16 @@
-doctype html
-html(lang="en")
-	include partials/head.pug
-	
+extends layouts/main
+
+block content_scripts
+	link(type='text/css', rel="stylesheet" href="css/main.css")
 	script(type='text/javascript', src='js/channel.js')
 
-	body
-		include partials/navbar.pug
-
-
-		//- include content here
-		#content
-			#middle
-				#Members.container-fluid
-					h4#M MEMBERS
-					ul#members.list-group
-						li.list-group-item DIKACHI
-						li.list-group-item MIRICAL
-						li.list-group-item SHARMAN
-						li
-				#chatArea
-<<<<<<< HEAD
-			#bottom
-				#attachments
-					| TESTING TEXT.
-					| 94 million (80 million).
-				form.form-inline(method="post",action="/channel")
-					.form-group
-						form(action='/action_page.php')
-							textarea(id="message",name='message', style='width:1000px; height:100px;')
-							br
-							input(type='submit')
-include partials/scripts.pug
-=======
-					#bottom
-						#attachments
-							| TESTING TEXT.
-							| &euro;94 million (&pound;80 million).
-						form.form-inline(method="post",action="/channel")
-							.form-group
-								textarea(id="message",name='message', style='width:1500px; height:100px;')
-								br
-								input(type='submit')
-		include partials/scripts.pug
->>>>>>> 7d072736f7cf2b90e5ba058c12a0c2b3eec7a815
+block content_main
+	include partials/sidebar
+	#chatArea
+		#bottom
+			#attachments
+			form.form-inline(method="post",action="/channel")
+				.form-group
+					textarea(id="message",name='message', style='width:1500px; height:100px;')
+					br
+					input(type='submit')
