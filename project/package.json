@@ -7,11 +7,12 @@
   "description": "Chatting app for any purpose!",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run-script mkdirs",
+    "prestart": "npm run mkdirs & npm run mongod &",
     "mkdirs": "mkdirp data/database",
+    "mongod": "node build",
     "start": "nodemon app",
-    "stop": "npm run-script stop_mongo",
-    "stop_mongo": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    "stop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\"",
+    "poststop": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\""
   },
   "author": "",
   "license": "ISC",

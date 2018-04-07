@@ -20,11 +20,9 @@ const signup = require('./routes/signup');
 
 // helper functions setup
 const fb = require('./utilities/firebase');
-const build = require('./build');
 
 // setup firebase and mongo in background
 fb.setupFirebase();
-build.setupMongo();
 
 // It begins!
 var app = express();
@@ -62,14 +60,6 @@ app.use('/group', group);
 app.use('/channel', channel);
 app.use('/signup', signup);
 
-app.listen(app.get('port'), function () {
-  console.log('Node.js/Express is listening on ' + url);
-  // opn(url);
-});
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/myPeople');
-
 app.use(session({
   genid: function (request) {
     return uuid();
@@ -79,6 +69,14 @@ app.use(session({
   //cookie: {secure: true},
   secret: 'apollo slackware prepositional expectations'
 }));
+
+app.listen(app.get('port'), function () {
+  console.log('Node.js/Express is listening on ' + url);
+  // opn(url);
+});
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/myPeople');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({

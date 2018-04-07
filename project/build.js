@@ -1,4 +1,4 @@
-const sys = require('util');
+const inherits = require('util').inherits;
 const spawn = require('child_process').spawn;
 const exec = require('child_process').exec;
 const os = require('os');
@@ -8,16 +8,14 @@ const startMongo = "mongod";
 const startMongoWin = "start " + startMongo;
 
 // setup for how to run mongo fore each env
-function setupMongo() {
-    if (os.type() === 'Linux') {
-        logEnv('Linux', startMongo);
-    } else if (os.type() === 'Darwin') {
-        logEnv('Mac', startMongo);
-    } else if (os.type() === 'Windows_NT') {
-        logEnv('Windows', startMongoWin);
-    } else
-        throw new Error("Unsupported OS found: " + os.type());
-}
+if (os.type() === 'Linux') {
+    logEnv('Linux', startMongo);
+} else if (os.type() === 'Darwin') {
+    logEnv('Mac', startMongo);
+} else if (os.type() === 'Windows_NT') {
+    logEnv('Windows', startMongoWin);
+} else
+    throw new Error("Unsupported OS found: " + os.type());
 
 // runs mongodb server for each env`
 function logEnv(osType, cmd) {
@@ -29,20 +27,18 @@ function logEnv(osType, cmd) {
             break;
 
         default:
-            var mongoOut = spawn(cmd, [], {
-                f: mongoConfig
-            });
-            mongoOut
-                .stdout
-                .on('data', (data) => {
-                    console.log(`stdout: ${data}`);
-                });
+            var pipe = spawn(cmd, ['-f', mongoConfig]);
 
-            mongoOut
-                .stderr
-                .on('data', (data) => {
-                    console.log(`stderr: ${data}`);
-                });
+            pipe.stdout.on('data', function (data) {
+                console.log(data.toString('utf8'));
+            });
+            pipe.stderr.on('data', (data) => {
+                console.log(data.toString('utf8'));
+            });
+            pipe.on('close', (code) => {
+                console.log('Process exited with code: ' + code);
+
+            });
             break;
     }
 }
@@ -50,7 +46,3 @@ function logEnv(osType, cmd) {
 function err(error, stdout, stderr) {
     console.log(stdout);
 }
-
-module.exports = {
-    setupMongo: setupMongo
-};
