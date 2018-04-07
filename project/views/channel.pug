@@ -20,14 +20,14 @@ html(lang="en")
 						li.list-group-item SHARMAN
 						li
 				#chatArea
-					#bottom
-						#attachments
-							| TESTING TEXT.
-							| &euro;94 million (&pound;80 million).
-						form.form-inline(method="post",action="/channel")
-							.form-group
-								form(action='/action_page.php')
-									textarea(id="message",name='message', style='width:1500px; height:100px;')
-									br
-									input(type='submit')
-		include partials/scripts.pug
+			#bottom
+				#attachments
+					| TESTING TEXT.
+					| 94 million (80 million).
+				form.form-inline(method="post",action="/channel")
+					.form-group
+						form(action='/action_page.php')
+							textarea(id="message",name='message', style='width:1000px; height:100px;')
+							br
+							input(type='submit')
+include partials/scripts.pug
