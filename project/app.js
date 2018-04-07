@@ -54,11 +54,13 @@ const index = require('./routes/index');
 const signup = require('./routes/signup');
 const group = require('./routes/group');
 const channel = require('./routes/channel');
+const message = require('./routes/message');
 
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/group', group);
 app.use('/channel', channel);
+app.use('/message', message);
 
 app.use(session({
   genid: function (request) {
