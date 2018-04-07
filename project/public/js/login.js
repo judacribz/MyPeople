@@ -1,11 +1,12 @@
+var auth;
+
 $(document).ready(function () {
 
-    // /* Handles the login */
-    // var login = function () {
-    //     var email = $('#email').val();
-    //     var password = $('#password').val();
-
-    // };
+    /* Handles the login */
+    var login = function () {
+        var email = $('#email').val();
+        var password = $('#password').val();
+    };
 
     // /* Login the user if the enter key is pressed */
     // $(document).keypress(function (e) {
@@ -18,15 +19,15 @@ $(document).ready(function () {
     // /* Login the user if login button is clicked */
     // $('#btnLogin').click(login);
 
-    // /* Take user to sign up page if sign up link button is clicked */
-    // $('#btnSignUp').click(function () {
-    //     window.location = "/signup";
-    // });
+    /* Take user to sign up page if sign up link button is clicked */
+    $('#btnSignUp').click(function () {
+        window.location = "/signup";
+    });
 
-    // /* Check if the authentication state has been changed, either if the user is logged in or not */
+    /* Check if the authentication state has been changed, either if the user is logged in or not */
     // firebase.auth().onAuthStateChanged(firebaseUser => {
     //     if (firebaseUser) {
-    //         console.log(firebaseUser + " is logged in.");
+    //         console.log(firebaseUser.displayName + " is logged in.");
     //     } else {
     //         console.log("No one logged in.");
     //     }

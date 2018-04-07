@@ -1,6 +1,15 @@
-const fbPath = 'https://mypeople-5d5e0.firebaseio.com';
-
 $(document).ready(function () {
+	// firebase.initializeApp({
+	// 	apiKey: "AIzaSyD7uRf5e4OpTiPMTdHmEA7RzhPa-lPFNrg",
+	// 	authDomain: "mypeople-5d5e0.firebaseapp.com",
+	// 	databaseURL: "https://mypeople-5d5e0.firebaseio.com",
+	// 	projectId: "mypeople-5d5e0",
+	// 	storageBucket: "mypeople-5d5e0.appspot.com",
+	// 	messagingSenderId: "347198606661"
+	// });
+
+	const fbPath = 'https://mypeople-5d5e0.firebaseio.com';
+
 	// TODO: group name and channel name hardcoded, make deterministic
 	var messages = new Firebase(
 		fbPath + '/groups/HackerGroup\-2018/events/messages/'
@@ -8,23 +17,17 @@ $(document).ready(function () {
 
 	messages
 		.limitToLast(10)
-		.on('child_added', function (snapshot) {
+		.on('child_added', function (userShot) {
 			var users = new Firebase(
-				fbPath + '/users/' + snapshot.val().uid + '/'
+				fbPath + '/users/' + userShot.val().uid + '/'
 			);
 
-			var username = "anonymous";
-			users.on('value', function (snapshot) {
+			users.on('value', function (messageShot) {
+				var username = messageShot.val().username;
 
-				username = snapshot.val().username;
-				if (!username)
-					username = snapshot.val().email;
+				$("#chatArea")
+					.append($(document.createElement("p"))
+						.text(username + " says: " + userShot.val().content));
 			});
-
-			$("#chatArea")
-				.append($(document.createElement("p"))
-					.text(username + " says: " + snapshot.val().content));
-
-			// console.log(snapshot.val());
 		});
 });

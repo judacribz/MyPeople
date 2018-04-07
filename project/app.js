@@ -11,13 +11,6 @@ const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
 
-// require routes setup
-const routes = require('./routes');
-const index = require('./routes/index');
-const group = require('./routes/group');
-const channel = require('./routes/channel');
-const signup = require('./routes/signup');
-
 // helper functions setup
 const fb = require('./utilities/firebase');
 
@@ -55,10 +48,17 @@ app.use(bodyParser.json());
  * add route here when adding new pages 
  * add the page path at the top of this file
  */
+// require routes setup
+const routes = require('./routes');
+const index = require('./routes/index');
+const signup = require('./routes/signup');
+const group = require('./routes/group');
+const channel = require('./routes/channel');
+
 app.use('/', index);
+app.use('/signup', signup);
 app.use('/group', group);
 app.use('/channel', channel);
-app.use('/signup', signup);
 
 app.use(session({
   genid: function (request) {
