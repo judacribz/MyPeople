@@ -1,13 +1,19 @@
 const firebase = require("firebase");
 const fbConfig = require('../config/firebase.config');
 
+var fbInitialized = false;
+
 module.exports = {
     firebase: firebase,
 
+    fbInitialized: fbInitialized,
+
     setupFirebase: function () {
         firebase.initializeApp(fbConfig);
+        fbInitialized = true;
     },
     fbPushUser: function (user, username) {
+
         var users = firebase
             .database()
             .ref('users');
