@@ -2,7 +2,7 @@ doctype html
 html(lang="en")
 
 	include partials/head
-	script(type='text/javascript', src='js/login.js')
+	//- script(type='text/javascript', src='js/login.js')
 
 	.body
 		.bottom-div
@@ -11,7 +11,7 @@ html(lang="en")
 					.navbar-header
 						a.navbar-brand(href='#') MyPeople
 			.inner-center-div
-				form
+				form.form-inline(method="post",action="/")
 					.input-group
 						input#email.form-control(type='email', name='email', placeholder='Email')
 						span.input-group-addon
@@ -20,7 +20,7 @@ html(lang="en")
 						input#password.form-control(type='password', name='password', placeholder='Password')
 						span.input-group-addon
 							i.glyphicon.glyphicon-lock
-					button#btnLogin.btn.btn-success(type='button') Login
+					button#btnLogin.btn.btn-success(type='submit') Login
 				button#btnSignUp.btn.btn-link(type='button') Don't have an account? Click here!
 
 	include partials/scripts
