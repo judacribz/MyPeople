@@ -1,31 +1,57 @@
-body {
-    background-color: #141452;
+html, body { 
+    background-color: #33CCFF;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.top-div {
+    background-color: black;
+    height: 37%;
+    width: inherit;
+    margin: auto;
 }
 
 .inner-center-div {
-    background-color: #33CCFF;
-    height: 270px;
-    margin: 360px auto;
-    overflow: auto;
+    background-color: red;
+    height: 30%;
+    width: inherit;
+    margin: auto;
 }
 
-.bottom-div {
+.top-div p {
+    color: aqua;
+    font-size: 15vw;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+.inner-center-div p {
+    color: white;
+    font-size: 200%;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+.navbar-inverse {
     background-color: black;
-    height: 560px;
 }
 
 form {
-	padding-top: 13px;
-    width: 50%;
+    width: 40%;
+    margin: 2em auto;
+}
+
+.form-group {
     margin: 1em auto;
 }
 
 .btn-success {
+    margin: 1em auto;
 	width: 50%;
-	margin: 0 auto;
 }
 
 .btn-danger {
-	width: 50%;
-	margin: 0 auto;
+    margin: 1em auto;
+    width: 50%;
 }

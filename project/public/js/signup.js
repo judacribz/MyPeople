@@ -4,16 +4,17 @@ $(document).ready(function () {
 	var signup = function () {
 		var email = $('#email').val();
 		var password = $('#password').val();
-		var username = $('#username').val();
 		var confirmPassword = $('#confirmPassword').val();
 		var auth = firebase.auth();
 
 		if (password != confirmPassword || password.length < 6) {
 			console.log("Password Invalid.");
 		} else {
-			auth.createUserWithEmailAndPassword(email, password).then(function () {
-				// TODO: Find a way to add username to firebase, take user back to login page after signup
-				console.log("Added to Database!");
+			auth.createUserWithEmailAndPassword(email, password).then(function (user) {
+				console.log("Added to database!");
+				/* Update the new user profile with the display name typed in by the user */
+				return user.updateProfile({ displayName: $('#username').val() });
+				window.location = "/";
 			}).catch(function (error) {
 				$('#password').val("");
 				$('#confirmPassword').val("");

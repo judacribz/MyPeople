@@ -7,7 +7,7 @@ $(document).ready(function () {
         var auth = firebase.auth();
 
         auth.signInWithEmailAndPassword(email, password).then(function () {
-            window.location = "/channel";
+            window.location = "/welcome";
         }).catch(function (error) {
             console.log(error.message);
             $('#password').val("");
@@ -34,7 +34,7 @@ $(document).ready(function () {
     /* Check if the authentication state has been changed, either if the user is logged in or not */
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-            console.log(firebaseUser + " is logged in.");
+            console.log(firebaseUser.displayName + " is logged in.");
         } else {
             console.log("No one logged in.");
         }
