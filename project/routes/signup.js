@@ -17,22 +17,34 @@ router.post('/', function (req, res) {
     var password = req.body.password;
     var username = req.body.username;
 
+    var confirmPassword = req.body.confirmPassword;
+    var auth = firebase.auth();
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-        res.redirect('/channel');
-
-        user.updateProfile({
-            displayName: username
-        }).then(function () {
-            fb.pushUser(user, username);
-        }, function (error) {
-            console.log(error);
+    /* Check if password and confirm password match */
+    if (password !== confirmPassword) {
+        /* Display error if passwords don't match */
+        console.log("Password Invalid.");
+        return;
+    } else {
+        /* Otherwise, add user to the database */
+        auth.createUserWithEmailAndPassword(email, password).then(function (user) {
+            console.log("Added to Database!");
+            user.updateProfile({
+                /* Update the new user profile with the display name typed in by the user */
+                displayName: username
+            }).then(function () {
+                /* Add username to firebase database */
+                fb.fbPushUser(user, username);
+                /* Redirect user to login page to login */
+                fb.onLoginSuccess(res, user, '/welcome');
+            }, function (error) {
+                console.log(error);
+            });
+        }).catch(function (error) {;
+            /* Clear password fields, if error occurs */
+            console.log(error.message);
         });
-
-
-    }).catch(function (error) {
-        console.log(error.message);
-    });
+    }
 });
 
 module.exports = router;

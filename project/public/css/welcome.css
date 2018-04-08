@@ -1,0 +1,31 @@
+html, body {
+	background-color: #33CCFF;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.top-div {
+	background-color: black;
+    height: 32%;
+    width: inherit;
+    margin: auto;
+}
+
+.inner-center-div {
+    background-color: red;
+    height: 5%;
+    width: inherit;
+    margin: auto;
+}
+
+.top-div p {
+    color: aqua;
+    font-size: 10vw;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+.navbar-inverse {
+    background-color: black;
+}

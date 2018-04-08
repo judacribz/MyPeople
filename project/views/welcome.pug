@@ -5,6 +5,21 @@ html(lang="en")
 	link(type='text/css', rel="stylesheet", href="css/welcome.css")
 
 	body
-		
+		.top-div
+			nav.navbar.navbar-inverse
+				.container-fluid
+					.navbar-header
+						a.navbar-brand(href='#') MyPeople
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(id='logout')
+								span.glyphicon.glyphicon-log-out
+								| Logout
+
+			p
+				i(id='username') Welcome #{user}
+
+		.inner-center-div
+
 
 	include partials/scripts

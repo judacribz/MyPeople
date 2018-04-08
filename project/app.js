@@ -51,17 +51,20 @@ app.use(bodyParser.json());
  * add the page path at the top of this file
  */
 // require routes setup
+
 const index = require(routes + '/index');
 const signup = require(routes + '/signup');
 const group = require(routes + '/group');
 const channel = require(routes + '/channel');
 const message = require(routes + '/message');
+const welcome = require(routes + '/welcome');
 
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/group', group);
 app.use('/channel', channel);
 app.use('/message', message);
+app.use('/welcome', welcome);
 
 app.use(session({
   genid: function (request) {

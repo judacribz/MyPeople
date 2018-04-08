@@ -28,8 +28,8 @@ module.exports = {
         });
     },
 
-    onLoginSuccess: (res, user) => {
-        res.redirect('/group');
+    onLoginSuccess: (res, user, path) => {
+        res.redirect(path);
         console.log(user.displayName + " is logged in.");
     },
 

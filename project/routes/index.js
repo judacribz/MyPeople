@@ -15,10 +15,12 @@ router.post('/', function (req, res) {
 	var email = req.body.email;
 	var password = req.body.password;
 	var username = req.body.username
-
+	/* Handle user login */
 	firebase.auth().signInWithEmailAndPassword(email, password).then(firebaseUser => {
-		fb.onLoginSuccess(res, firebaseUser);
+		/* If user is successfully logged in, redirect them to the welcome page */
+		fb.onLoginSuccess(res, firebaseUser, '/welcome');
 	}).catch(function (error) {
+		/* Display error if user login was incorrect or if user does not exist */
 		console.log(error.message);
 	});
 });
