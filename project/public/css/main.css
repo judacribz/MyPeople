@@ -42,15 +42,13 @@ a {
 }
 
 #groupContent,
-#chatArea {
-    
-}
+#chatArea {}
 
 #chatArea {
-  background-color: #7FFFD4;
-  height: 500px;
-  weight: 1000px;
-  overflow: auto;
+    background-color: #7FFFD4;
+    height: 500px;
+    weight: 1000px;
+    overflow: auto;
 }
 
 #attachments {
@@ -62,6 +60,6 @@ a {
 }
 
 #bottom {
-  position: fixed;
-  bottom: 0;
+    position: fixed;
+    bottom: 0;
 }

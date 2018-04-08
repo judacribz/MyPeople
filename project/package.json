@@ -7,7 +7,7 @@
   "description": "Chatting app for any purpose!",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run mkdirs & npm run mongod &",
+    "prestart": "npm run mkdirs",
     "mkdirs": "mkdirp data/database",
     "mongod": "node build",
     "start": "nodemon app",
