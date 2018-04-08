@@ -23,13 +23,4 @@ $(document).ready(function () {
     $('#btnSignUp').click(function () {
         window.location = "/signup";
     });
-
-    /* Check if the authentication state has been changed, either if the user is logged in or not */
-    // firebase.auth().onAuthStateChanged(firebaseUser => {
-    //     if (firebaseUser) {
-    //         console.log(firebaseUser.displayName + " is logged in.");
-    //     } else {
-    //         console.log("No one logged in.");
-    //     }
-    // });
 });

@@ -10,6 +10,7 @@ const assert = require('assert');
 const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
+
 const routes = path.join(__dirname, 'routes');
 
 // helper functions setup
@@ -43,10 +44,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-/* 
+/*
  * Routes Setup
  * ============
- * add route here when adding new pages 
+ * add route here when adding new pages
  * add the page path at the top of this file
  */
 // require routes setup
@@ -54,11 +55,13 @@ const index = require(routes + '/index');
 const signup = require(routes + '/signup');
 const group = require(routes + '/group');
 const channel = require(routes + '/channel');
+const message = require(routes + '/message');
 
 app.use('/', index);
 app.use('/signup', signup);
 app.use('/group', group);
 app.use('/channel', channel);
+app.use('/message', message);
 
 app.use(session({
   genid: function (request) {

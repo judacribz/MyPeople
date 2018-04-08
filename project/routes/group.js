@@ -1,11 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const fb = require("../utilities/firebase");
+const firebase = fb.firebase;
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function (req, res) {
-    res.render('group', {
-        title: 'GROUP_NAME | My People',
-        groupList: ["coolGroup", "randgroup", "tests"]
-    });
+    if (firebase.auth().currentUser) {
+        fb.getGroups();
+
+        res.render('group', {
+            title: 'GROUP_NAME | My People',
+            groupList: ["coolGroup", "randgroup", "tests"]
+        });
+    } else {
+        res.redirect('/');
+    }
 });
 
 module.exports = router;

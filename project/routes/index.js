@@ -16,8 +16,8 @@ router.post('/', function (req, res) {
 	var password = req.body.password;
 	var username = req.body.username
 
-	firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-		res.redirect('/channel');
+	firebase.auth().signInWithEmailAndPassword(email, password).then(firebaseUser => {
+		fb.onLoginSuccess(res, firebaseUser);
 	}).catch(function (error) {
 		console.log(error.message);
 	});

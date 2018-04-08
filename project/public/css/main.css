@@ -41,9 +41,14 @@ a {
     color: white;
 }
 
-#groupContent {
-    display: grid;
-    grid-template-rows: auto 450px;
+#groupContent,
+#chatArea {}
+
+#chatArea {
+    background-color: #7FFFD4;
+    height: 500px;
+    weight: 1000px;
+    overflow: auto;
 }
 
 #attachments {
@@ -52,4 +57,9 @@ a {
 
 #message {
     width: 500px;
+}
+
+#bottom {
+    position: fixed;
+    bottom: 0;
 }

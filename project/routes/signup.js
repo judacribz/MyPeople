@@ -24,7 +24,7 @@ router.post('/', function (req, res) {
         user.updateProfile({
             displayName: username
         }).then(function () {
-            fb.fbPushUser(user, username);
+            fb.pushUser(user, username);
         }, function (error) {
             console.log(error);
         });
