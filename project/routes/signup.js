@@ -34,7 +34,7 @@ router.post('/', function (req, res) {
                 displayName: username
             }).then(function () {
                 /* Add username to firebase database */
-                fb.fbPushUser(user, username);
+                fb.pushUser(user, username);
                 /* Redirect user to login page to login */
                 fb.onLoginSuccess(res, user, '/welcome');
             }, function (error) {
