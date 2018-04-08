@@ -16,9 +16,12 @@ router.post('/', function (req, res) {
 	var password = req.body.password;
 	var username = req.body.username
 
+	/* Handle user login */
 	firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-		res.redirect('/channel');
+		/* If user is successfully logged in, redirect them to the welcome page */
+		res.redirect('/welcome');
 	}).catch(function (error) {
+		/* Display error if user login was incorrect or if user does not exist */
 		console.log(error.message);
 	});
 });
