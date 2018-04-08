@@ -11,6 +11,7 @@ const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
 
+
 // helper functions setup
 const fb = require('./utilities/firebase');
 
@@ -19,6 +20,9 @@ fb.setupFirebase();
 
 // It begins!
 var app = express();
+
+var router = express.Router();
+
 
 // protect from attacks
 app.use(helmet());
@@ -82,13 +86,14 @@ mongoose.connect('mongodb://localhost:27017/myPeople');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
-  username: {
+  username:
+  {
     type: String,
     unique: true,
     index: true
   },
-  email: String,
-  usercontacts: [String]
+  email: {type: String,
+             index: true},
 }, {
   collection: 'users'
 });
@@ -106,6 +111,80 @@ var GroupSchema = new Schema({
 }, {
   collection: 'groups'
 });
+
 var Group = mongoose.model('group', GroupSchema);
 
+
+var rootRef = fb.firebase.database().ref().child("users");
+
+var rootGroup = fb.firebase.database().ref().child("groups");
+
+var user__name = [];
+var emails = [];
+
+var user11, email_t;
+
+  rootRef.on("child_added", snap =>{
+   var user11 = snap.child("username").val();
+   var email_t = snap.child("email").val();
+
+   user__name.push(user11);
+   emails.push(email_t);
+
+   //loadUsers(user11, email_t);
+    });
+
+    rootGroup.on("value", snap =>{
+      var u = snap.child("value").val();
+      //console.log(u);
+    });
+
+      function loadUsers(user11, email_t)
+      {
+          var studentData = {username: user11,
+                             email: email_t
+                             };
+          User.find({username: user11}).then(function(results)
+          {
+            if (results.length > 0)
+            {
+              // update the student
+              User.update({username: user11},
+                             studentData,
+                             {multi: false},
+                             function(error, numAffected)
+                             {
+                               if (error || numAffected != 1)
+                               {
+                                 console.log('Unable to update student: ' + error);
+
+                               } else
+                               {
+                                 console.log( 'Student updated');
+                               }
+                             });
+            } else
+            {
+              // save a new student
+              var newStudent = new User(studentData);
+              newStudent.save(function(error)
+              {
+                if (error)
+                {
+                  console.log('Unable to save student');
+
+                } else
+                {
+                  console.log('Student added');
+                }
+              });
+            }
+          });
+      }
+
+    //User.find().then(function(results) {
+  //console.log(results);
+  //});
+  //dikachi();
 module.exports = app;
+module.exports = router;
