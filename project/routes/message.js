@@ -16,14 +16,17 @@ var rootRef = fb.firebase.database().ref().child("users");
    e.push(email_t);
   });
 
+  router.get('/', function (req, res) {
+      fb.checkAuth(res, () => {
+          info = fb.getInfo();
 
-router.get('/', function (req, res) {
-    res.render('message', {
-        title: 'DIRECT MESSAGE | My People',
-        groupList: ['Group1'],
-        channelList: ['Channel1','Channel2'],
-        messageList: username1
-    });
-});
+          res.render('message', {
+              title: 'DIRECT MESSAGE | My People',
+              groupList: info.groupNames,
+              channelList: info.channelNames,
+              messageList: username1
+          });
+      });
+  });
 
 module.exports = router;
