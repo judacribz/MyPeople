@@ -3,8 +3,6 @@ const firebase = fb.firebase;
 const express = require('express');
 const router = express.Router();
 
-fb.getGroups();
-
 /* GET welcome page. */
 router.get('/', function (req, res) {
 	if (firebase.auth().currentUser) {
