@@ -6,6 +6,7 @@ var info;
 
 var rootRef = fb.firebase.database().ref().child("users");
 
+//Gets usernames
 var username1 = [];
 rootRef.on("child_added", snap =>{
  var user = snap.child("username").val();

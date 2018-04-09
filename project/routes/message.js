@@ -6,7 +6,7 @@ var router = express.Router();
 
 var rootRef = fb.firebase.database().ref().child("users");
 
-
+  //Gets Usernames
   var username1 = [];
   var e = [];
   rootRef.on("child_added", snap =>{
