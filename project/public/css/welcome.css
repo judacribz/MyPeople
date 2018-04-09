@@ -26,6 +26,13 @@ html, body {
     text-align: center;
 }
 
+.inner-center-div p {
+    color: white;
+    font-size: 200%;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
 .navbar-inverse {
     background-color: black;
 }
