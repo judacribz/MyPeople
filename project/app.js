@@ -136,7 +136,7 @@ var user11, email_t;
    user__name.push(user11);
    emails.push(email_t);
 
-   //loadUsers(user11, email_t);
+   loadUsers(user11, email_t);
     });
 
     rootGroup.on("value", snap =>{
@@ -161,7 +161,7 @@ var user11, email_t;
                              {
                                if (error || numAffected != 1)
                                {
-                                 console.log('Unable to update student: ' + error);
+                                 console.log('No need to update ' + error);
 
                                } else
                                {
@@ -187,9 +187,16 @@ var user11, email_t;
           });
       }
 
-    //User.find().then(function(results) {
-  //console.log(results);
-  //});
-  //dikachi();
+
+      function getUsernames()
+      {
+        User.find({},{ username: 1,}).then(function(results)
+        {
+          return results;
+        });
+      }
+
+      getUsernames();
+
 module.exports = app;
 module.exports = router;
