@@ -161,11 +161,11 @@ var user11, email_t;
                              {
                                if (error || numAffected != 1)
                                {
-                                 console.log('No need to update ' + error);
+                                 console.log('No need to update user');
 
                                } else
                                {
-                                 console.log( 'Student updated');
+                                 console.log( 'User updated');
                                }
                              });
             } else
@@ -176,11 +176,11 @@ var user11, email_t;
               {
                 if (error)
                 {
-                  console.log('Unable to save student');
+                  console.log('Unable to save User');
 
                 } else
                 {
-                  console.log('Student added');
+                  console.log('User added');
                 }
               });
             }
