@@ -53,31 +53,55 @@ module.exports = {
     },
 
     // pushes a message to firebase (used in routes/channel.js)
-    pushMessage: function (user, message) {
-        var messages = fbDatabase
-            .ref('groups/HackerGroup-2018/events/messages/');
+    pushMessage: function (user, message, group = 'HackerGroup-2018', channel = 'events') {
+        firebase.database()
+            .ref('groups/' + group + '/channels/' + channel + '/messages/' + Date.now())
+            .set({
+                uid: user.uid,
+                content: message
+            });
+    },
 
-        var updates = {};
-        updates[Date.now()] = {
-            uid: user.uid,
-            content: message
+    // get current users groups
+    getInfo: (user = firebase.auth().currentUser) => {
+        var groupNames = [];
+        var channelNames = [];
+
+        var channels;
+        var groups = fbDatabase.ref("groups");
+        groups.on("child_added", groupShot => {
+            groupNames.push(groupShot.key);
+
+            channels = fbDatabase.ref("groups/" + groupShot.key + "/channels");
+            channels.on("child_added", chanShot => {
+                channelNames.push(chanShot.key);
+            });
+        });
+
+        return {
+            groupNames: groupNames,
+            channelNames: channelNames
         };
-        messages.update(updates);
+    },
+
+    // get current users groups
+    getChannels: (groupName) => {
+        var channelNames = [];
+        channels = fbDatabase.ref("groups/" + groupName + "/channels");
+        channels.on("child_added", chanShot => {
+            channelNames.push(chanShot.key);
+        });
+
+        return channelNames;
     },
 
 
     // get current users groups
-    getGroups: (user = firebase.auth().currentUser) => {
-        var groups = fbDatabase
-            .ref('groups/');
-
-        var groupsList = []
-        groups.once('value', function (groupsShot) {
-            groupsShot.forEach(function (group) {
-                groupsList.push(group.key)
-            });
-        });
-
-        console.log(groupsList[0]);
+    checkAuth: (res, func) => {
+        if (firebase.auth().currentUser) {
+            func();
+        } else {
+            res.redirect('/');
+        }
     }
 };

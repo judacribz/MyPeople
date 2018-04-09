@@ -11,9 +11,7 @@ const opn = require('opn');
 const path = require('path');
 const nodemon = require('nodemon');
 
-
 const routes = path.join(__dirname, 'routes');
-
 
 // helper functions setup
 const fb = require('./utilities/firebase');
@@ -23,9 +21,6 @@ fb.setupFirebase();
 
 // It begins!
 var app = express();
-
-var router = express.Router();
-
 
 // protect from attacks
 app.use(helmet());
@@ -91,14 +86,15 @@ mongoose.connect('mongodb://localhost:27017/myPeople');
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
-  username:
-  {
+  username: {
     type: String,
     unique: true,
     index: true
   },
-  email: {type: String,
-             index: true},
+  email: {
+    type: String,
+    index: true
+  },
 }, {
   collection: 'users'
 });
@@ -129,74 +125,69 @@ var emails = [];
 
 var user11, email_t;
 
-  rootRef.on("child_added", snap =>{
-   var user11 = snap.child("username").val();
-   var email_t = snap.child("email").val();
+rootRef.on("child_added", snap => {
+  var user11 = snap.child("username").val();
+  var email_t = snap.child("email").val();
 
-   user__name.push(user11);
-   emails.push(email_t);
+  user__name.push(user11);
+  emails.push(email_t);
 
-   loadUsers(user11, email_t);
-    });
+  loadUsers(user11, email_t);
+});
 
-    rootGroup.on("value", snap =>{
-      var u = snap.child("value").val();
-      //console.log(u);
-    });
+rootGroup.on("value", snap => {
+  var u = snap.child("value").val();
+  //console.log(u);
+});
 
-      function loadUsers(user11, email_t)
-      {
-          var studentData = {username: user11,
-                             email: email_t
-                             };
-          User.find({username: user11}).then(function(results)
-          {
-            if (results.length > 0)
-            {
-              // update the student
-              User.update({username: user11},
-                             studentData,
-                             {multi: false},
-                             function(error, numAffected)
-                             {
-                               if (error || numAffected != 1)
-                               {
-                                 console.log('No need to update user');
+function loadUsers(user11, email_t) {
+  var studentData = {
+    username: user11,
+    email: email_t
+  };
+  User.find({
+    username: user11
+  }).then(function (results) {
+    if (results.length > 0) {
+      // update the student
+      User.update({
+          username: user11
+        },
+        studentData, {
+          multi: false
+        },
+        function (error, numAffected) {
+          if (error || numAffected != 1) {
+            console.log('No need to update ' + error);
 
-                               } else
-                               {
-                                 console.log( 'User updated');
-                               }
-                             });
-            } else
-            {
-              // save a new student
-              var newStudent = new User(studentData);
-              newStudent.save(function(error)
-              {
-                if (error)
-                {
-                  console.log('Unable to save User');
-
-                } else
-                {
-                  console.log('User added');
-                }
-              });
-            }
-          });
-      }
-
-
-      function getUsernames()
-      {
-        User.find({},{ username: 1,}).then(function(results)
-        {
-          return results;
+          } else {
+            console.log('Student updated');
+          }
         });
-      }
+    } else {
+      // save a new student
+      var newStudent = new User(studentData);
+      newStudent.save(function (error) {
+        if (error) {
+          console.log('Unable to save student');
 
-      getUsernames();
+        } else {
+          console.log('Student added');
+        }
+      });
+    }
+  });
+}
+
+
+function getUsernames() {
+  User.find({}, {
+    username: 1,
+  }).then(function (results) {
+    return results;
+  });
+}
+
+getUsernames();
 
 module.exports = app;
-module.exports = router;

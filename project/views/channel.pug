@@ -1,8 +1,8 @@
 extends layouts/main
 
-block content_scripts
-	link(type='text/css', rel="stylesheet" href="css/main.css")
-	script(type='text/javascript', src='js/channel.js')
+append content_scripts
+	link(rel="stylesheet" href="../css/main.css")
+	script(src='../js/channel.js')
 
 block content_main
 	include partials/sidebar
