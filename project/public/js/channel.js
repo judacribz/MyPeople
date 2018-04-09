@@ -3,7 +3,7 @@ $(document).ready(function () {
 	var fbDatabase = firebase.database();
 	// TODO: group name and channel name hardcoded, make deterministic
 	var messages = fbDatabase
-		.ref('groups/HackerGroup-2018/events/messages/');
+		.ref('groups/HackerGroup-2018/channels/events/messages/');
 
 	var username;
 	messages

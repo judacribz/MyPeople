@@ -54,8 +54,8 @@ module.exports = {
 
     // pushes a message to firebase (used in routes/channel.js)
     pushMessage: function (user, message) {
-        var messages = fbDatabase
-            .ref('groups/HackerGroup-2018/events/messages/');
+        var messages = firebase.database()
+            .ref('groups/HackerGroup-2018/channels/random/messages/');
 
         var updates = {};
         updates[Date.now()] = {
@@ -68,16 +68,29 @@ module.exports = {
 
     // get current users groups
     getGroups: (user = firebase.auth().currentUser) => {
-        var groups = fbDatabase
-            .ref('groups/');
+        var groupNames = [];
+        var channelNames = [];
 
-        var groupsList = []
-        groups.once('value', function (groupsShot) {
-            groupsShot.forEach(function (group) {
-                groupsList.push(group.key)
-            });
+        var channels;
+        var groups = fbDatabase.ref("groups");
+        groups.on("child_added", snap => {
+            groupNames.push(snap.key);
+
+            channels = fbDatabase.ref("groups/" + snap.key + "/channels");
+            console.log(snap.val().key);
+            channelNames.push(snap.val());
         });
 
-        console.log(groupsList[0]);
+        return groupNames;
+    },
+
+
+    // get current users groups
+    checkAuth: (res, func) => {
+        if (firebase.auth().currentUser) {
+            func();
+        } else {
+            res.redirect('/');
+        }
     }
 };

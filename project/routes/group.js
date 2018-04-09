@@ -3,17 +3,26 @@ const firebase = fb.firebase;
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res) {
-    if (firebase.auth().currentUser) {
-        fb.getGroups();
+var groupList = fb.getGroups();
 
+router.get('/', function (req, res) {
+    fb.checkAuth(res, () => {
         res.render('group', {
             title: 'GROUP_NAME | My People',
-            groupList: ["coolGroup", "randgroup", "tests"]
+            groupList: groupList,
+            channelList: groupList
         });
-    } else {
-        res.redirect('/');
-    }
+    });
+});
+
+router.get('/:groupId', function (req, res) {
+    fb.checkAuth(res, () => {
+        res.render('group', {
+            title: 'GROUP_NAME | My People',
+            groupList: fb.getGroups(),
+            channelList: fb.getGroups(),
+        });
+    });
 });
 
 module.exports = router;
