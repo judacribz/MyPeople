@@ -2,30 +2,28 @@ const fb = require("../utilities/firebase");
 const firebase = fb.firebase;
 const express = require('express');
 const router = express.Router();
-var info;
+var info = fb.getInfo();
 
 router.get('/', function (req, res) {
     fb.checkAuth(res, () => {
-        info = fb.getInfo();
-
         res.render('group', {
             title: 'GROUP_NAME | My People',
             groupList: info.groupNames,
-            channelList: info.channelNames
+            channelList: info.channelNames,
+            messageList: info.usernames
         });
     });
 });
 
 router.get('/:groupId', function (req, res) {
     fb.checkAuth(res, () => {
-        info = fb.getInfo();
-
         var groupName = req.params.groupId;
         var channelNames = fb.getChannels(groupName);
         res.render('group', {
             title: groupName + ' | My People',
             groupList: info.groupNames,
-            channelList: channelNames
+            channelList: channelNames,
+            messageList: info.usernames
         });
     });
 });

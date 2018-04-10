@@ -4,6 +4,16 @@ const fbConfig = require('../config/firebase.config');
 var fbInitialized = false;
 var fbDatabase;
 
+function getChannels(groupName) {
+    var channelNames = [];
+    channels = fbDatabase.ref("groups/" + groupName + "/channels");
+    channels.on("child_added", chanShot => {
+        channelNames.push(chanShot.key);
+    });
+
+    return channelNames;
+}
+
 module.exports = {
     firebase: firebase,
 
@@ -66,34 +76,45 @@ module.exports = {
     getInfo: (user = firebase.auth().currentUser) => {
         var groupNames = [];
         var channelNames = [];
+        var uids = [];
+        var usernames = [];
+        var emails = [];
 
         var channels;
         var groups = fbDatabase.ref("groups");
         groups.on("child_added", groupShot => {
             groupNames.push(groupShot.key);
 
-            channels = fbDatabase.ref("groups/" + groupShot.key + "/channels");
-            channels.on("child_added", chanShot => {
-                channelNames.push(chanShot.key);
+            getChannels(groupShot.key).forEach((channelName) => {
+                channelNames.push(channelName);
             });
         });
 
+        //Gets all uids, usernames, emails
+        var uid, username, email;
+        var users = fbDatabase.ref("users");
+        users.on("child_added", userShot => {
+            uid = userShot.key;
+            uids.push(uid);
+
+            var usersInfo = fbDatabase.ref("users/" + uid);
+            usersInfo.on("value", userShot => {
+                emails.push(userShot.val().email);
+                usernames.push(userShot.val().username);
+            });
+        });
+
+
         return {
             groupNames: groupNames,
-            channelNames: channelNames
+            channelNames: channelNames,
+            usernames: usernames,
+            emails: emails
         };
     },
 
-    // get current users groups
-    getChannels: (groupName) => {
-        var channelNames = [];
-        channels = fbDatabase.ref("groups/" + groupName + "/channels");
-        channels.on("child_added", chanShot => {
-            channelNames.push(chanShot.key);
-        });
-
-        return channelNames;
-    },
+    // get current users channels
+    getChannels: getChannels,
 
 
     // get current users groups

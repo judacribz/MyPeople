@@ -24,5 +24,10 @@ html(lang="en")
 				i Choose a workspace
 			
 			ul.list-group
+				each listItem in groupList
+					a(href='/group/' + listItem).list-group-item.list-group-item-action= listItem
+			ul.list-group
+				each listItem in channelList
+					a(href='/channel/' + listItem).list-group-item.list-group-item-action= listItem
 
 	include partials/scripts

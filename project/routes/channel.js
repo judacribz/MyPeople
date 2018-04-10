@@ -4,17 +4,6 @@ const express = require('express');
 const router = express.Router();
 var info;
 
-var rootRef = fb.firebase.database().ref().child("users");
-
-//Gets usernames
-var username1 = [];
-rootRef.on("child_added", snap =>{
- var user = snap.child("username").val();
- var email_t = snap.child("email").val();
- username1.push(user);
-});
-
-
 router.get('/', function (req, res) {
     fb.checkAuth(res, () => {
         info = fb.getInfo();
@@ -23,7 +12,7 @@ router.get('/', function (req, res) {
             title: 'CHANNEL_NAME | My People',
             groupList: info.groupNames,
             channelList: info.channelNames,
-            messageList: username1
+            messageList: info.usernames
         });
     });
 });
@@ -38,7 +27,7 @@ router.get('/:chanId', function (req, res) {
             title: chanName + ' | My People',
             groupList: info.groupNames,
             channelList: info.channelNames,
-            messageList: username1
+            messageList: info.usernames
         });
     });
 });
