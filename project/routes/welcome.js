@@ -3,6 +3,8 @@ const firebase = fb.firebase;
 const express = require('express');
 const router = express.Router();
 
+const message = 'Choose A Workspace';
+
 var info = fb.getInfo();
 var channelNames = [];
 
@@ -22,6 +24,7 @@ router.get('/', function (req, res) {
 		res.render('welcome', {
 			title: 'Welcome | My People',
 			user: user.displayName,
+			message: message,
 			groupList: info.groupNames,
 			channelNames: channelNames,
 			channelList: info.channelNames

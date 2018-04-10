@@ -2,24 +2,16 @@ doctype html
 html(lang="en")
 	include ../partials/head
 
+	link(rel="stylesheet" href="/css/auth.css")
 	block content_scripts
 
 	body
 		.top-div
-			nav.navbar.navbar-inverse
-				.container-fluid
-					.navbar-header
-						a.navbar-brand(href='/')= title.split(' | ')[1]
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(href='/signup')
-								span.glyphicon.glyphicon-user
-								| Sign Up
-						li
-							a(href='/')
-								span.glyphicon.glyphicon-log-in
-								| Login
-			p
+			include ../partials/navauth
+
+			block content_extra
+
+			p.text-center.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
 				i= title.split(' | ')[1]
 		.inner-center-div
 			p

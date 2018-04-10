@@ -1,0 +1,41 @@
+html,
+body {
+    background-color: #33CCFF;
+    height: 100%;
+    width: 100%;
+}
+
+.top-div {
+    position: relative;
+    background-color: black;
+    height: 32%;
+    width: inherit;
+    min-height: 20em;
+}
+
+.inner-center-div {
+    background-color: red;
+    height: 5%;
+    width: inherit;
+    margin: auto;
+    min-height: 2.5em;
+}
+
+.top-div p {
+    position: absolute;
+    bottom: 0;
+    color: aqua;
+    font-size: 10vw;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.inner-center-div p {
+    color: white;
+    font-size: 200%;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+.navbar-inverse {
+    background-color: #000;
+}

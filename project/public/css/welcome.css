@@ -3,43 +3,20 @@ body {
     background-color: #33CCFF;
     height: 100%;
     width: 100%;
-    margin: auto;
+    min-width: 40em;
+}
+
+h3#welcomeMsg {
+    position: absolute;
+    top: 0;
+    font-size: 30pt;
+    font-family: 'Lobster', cursive;
+    color: #FFF;
 }
 
 h3 {
     font-family: 'Lobster', cursive;
-}
-
-.top-div {
-    background-color: black;
-    height: 32%;
-    width: inherit;
-    margin: auto;
-}
-
-.inner-center-div {
-    background-color: red;
-    height: 5%;
-    width: inherit;
-    margin: auto;
-}
-
-.top-div p {
-    color: aqua;
-    font-size: 10vw;
-    font-family: "Times New Roman", Times, serif;
-    text-align: center;
-}
-
-.inner-center-div p {
-    color: white;
-    font-size: 200%;
-    font-family: "Times New Roman", Times, serif;
-    text-align: center;
-}
-
-.navbar-inverse {
-    background-color: black;
+    color: #000;
 }
 
 a.list-group-select,

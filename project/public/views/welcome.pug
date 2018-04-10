@@ -1,37 +1,29 @@
-doctype html
-html(lang="en")
-	include partials/head
+extends layouts/auth
+
+append content_scripts
 	script(src='/js/welcome.js')
 	link(rel="stylesheet", href="/css/welcome.css")
 
-	body
-		.top-div
-			nav.navbar.navbar-inverse
-				.container-fluid
-					.navbar-header
-						a.navbar-brand(href='#') MyPeople
-					ul.nav.navbar-nav.navbar-right
-						li
-							a(id='logout')
-								span.glyphicon.glyphicon-log-out
-								| Logout
-			p
-				i Welcome #{user}
+block content_extra
+	h3#welcomeMsg.text-center.text-center.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
+		i Welcome #{user}
 
-		.inner-center-div
-			p
-				i Choose a workspace
-			each routeItem in [groupList, channelList]
-				if routeItem == groupList
-					h3.text-center Groups
-				else
-					h3.text-center Channels
-				ul.list-group
-					each listItem, index in routeItem
-						if routeItem == channelList
-							- var item = channelNames[index]
-						else
-							- var item = listItem
-						a(href='group/' + listItem).list-group-item.list-group-hover.text-center= item
+block content_navauth
+	li
+		a(id='logout')
+			span.glyphicon.glyphicon-log-out
+			| Logout
 
-	include partials/scripts
+block content_main
+		each routeItem in [groupList, channelList]
+			if routeItem == groupList
+				h3.text-center Groups
+			else
+				h3.text-center Channels
+			ul.list-group
+				each listItem, index in routeItem
+					if routeItem == channelList
+						- var item = channelNames[index]
+					else
+						- var item = listItem
+					a(href='group/' + listItem).list-group-item.list-group-hover.text-center= item
