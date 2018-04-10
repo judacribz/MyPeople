@@ -1,44 +1,43 @@
+const models = {
+    userSchema: require("../models/user.schema"),
+    groupSchema: require("../models/group.schema")
+};
+const mongoose = require('mongoose');
+var User = mongoose.model('user', models.userSchema);
+var Group = mongoose.model('group', models.groupSchema);
+var newUser
 module.exports = {
 
-    loadUsers: (user11, email_t) => {
-        var studentData = {
-            username: user11,
-            email: email_t
-        };
+    // Adds user to mongodb
+    createUser: (user) => {
+
         User.find({
-            username: user11
-        }).then(function (results) {
+            uid: user.uid
+        }).then((results) => {
             if (results.length > 0) {
-                // update the student
+                // update the user
                 User.update({
-                        username: user11
+                        uid: user.uid
                     },
-                    studentData, {
+                    user, {
                         multi: false
                     },
                     function (error, numAffected) {
                         if (error || numAffected != 1) {
-                            console.log('No need to update ' + error);
-
-                        } else {
-                            console.log('Student updated');
+                            console.log('Not updating user' + error);
                         }
                     });
             } else {
                 // save a new student
-                var newStudent = new User(studentData);
-                newStudent.save(function (error) {
+                var newUser = new User(user);
+                newUser.save(function (error) {
                     if (error) {
-                        console.log('Unable to save student');
-
-                    } else {
-                        console.log('Student added');
+                        console.log('Unable to save user');
                     }
                 });
             }
         });
     },
-
 
     getUsernames: () => {
         User.find({}, {

@@ -1,3 +1,4 @@
+const mongodb = require("../utilities/mongodb");
 const firebase = require("firebase");
 const fbConfig = require('../config/firebase.config');
 
@@ -6,7 +7,7 @@ var fbDatabase;
 
 function getChannels(groupName) {
     var channelNames = [];
-    channels = fbDatabase.ref("groups/" + groupName + "/channels");
+    var channels = fbDatabase.ref("groups/" + groupName + "/channels");
     channels.on("child_added", chanShot => {
         channelNames.push(chanShot.key);
     });
@@ -72,7 +73,7 @@ module.exports = {
             });
     },
 
-    // get current users groups
+    // get current users groups channels and update/push users to mongo
     getInfo: (user = firebase.auth().currentUser) => {
         var groupNames = [];
         var channelNames = [];
@@ -90,24 +91,35 @@ module.exports = {
             });
         });
 
-        //Gets all uids, usernames, emails
-        var uid, username, email;
         var users = fbDatabase.ref("users");
+        var emails = [],
+            usernames = [];
         users.on("child_added", userShot => {
-            uid = userShot.key;
+            var uid = userShot.key;
             uids.push(uid);
 
-            var usersInfo = fbDatabase.ref("users/" + uid);
-            usersInfo.on("value", userShot => {
-                emails.push(userShot.val().email);
-                usernames.push(userShot.val().username);
-            });
-        });
+            var users = fbDatabase.ref("users/" + uid);
 
+            users.once("value").then(userShot => {
+                usernames.push(userShot.val().username);
+                emails.push(userShot.val().email);
+
+
+                var user = {
+                    uid: uid,
+                    username: userShot.val().username,
+                    email: userShot.val().email
+                };
+
+                mongodb.loadUser(user);
+            });
+
+        });
 
         return {
             groupNames: groupNames,
             channelNames: channelNames,
+            uids: uids,
             usernames: usernames,
             emails: emails
         };
