@@ -36,17 +36,17 @@ module.exports = {
         });
     },
 
+
+    // redirects user to new 
     onLoginSuccess: (res, user, path) => {
         res.redirect(path);
-        console.log(user.displayName + " is logged in.");
+        console.log("Logged in as " + user.displayName + "!");
     },
 
     // pushes user info to firebase (used in routes/signup.js)
     pushUser: function (user, username) {
         var users = fbDatabase
             .ref('users');
-
-        console.log(firebase.auth());
 
         var displayName;
         user.providerData.forEach(profile => {
@@ -61,8 +61,8 @@ module.exports = {
     },
 
     // pushes a message to firebase (used in routes/channel.js)
-    pushMessage: function (user, message, group = 'HackerGroup-2018', channel = 'events') {
-        firebase.database()
+    pushMessage: function (user, message, group, channel) {
+        fbDatabase
             .ref('groups/' + group + '/channels/' + channel + '/messages/' + Date.now())
             .set({
                 uid: user.uid,
@@ -78,16 +78,19 @@ module.exports = {
         var usernames = [];
         var emails = [];
 
+        // get the groups
         var channels;
         var groups = fbDatabase.ref("groups");
         groups.on("child_added", groupShot => {
             groupNames.push(groupShot.key);
 
+            // get the channels for each group
             getChannels(groupShot.key).forEach((channelName) => {
                 channelNames.push(groupShot.key + '/channel/' + channelName);
             });
         });
 
+        // get all users
         var users = fbDatabase.ref("users");
         var emails = [],
             usernames = [];
@@ -95,12 +98,10 @@ module.exports = {
             var uid = userShot.key;
             uids.push(uid);
 
-            var users = fbDatabase.ref("users/" + uid);
-
-            users.once("value").then(userShot => {
+            // get all usernames and emails
+            fbDatabase.ref("users/" + uid).once("value").then(userShot => {
                 usernames.push(userShot.val().username);
                 emails.push(userShot.val().email);
-
 
                 var user = {
                     uid: uid,
@@ -113,6 +114,7 @@ module.exports = {
 
         });
 
+        // return lists of group names, channel names, uids, usernames, and emails
         return {
             groupNames: groupNames,
             channelNames: channelNames,

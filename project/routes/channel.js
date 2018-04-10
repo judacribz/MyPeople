@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 var info = fb.getInfo();
 
-router.get('/:groupId/channel/:chanId', function (req, res) {
+router.get('/:groupId/channel/:chanId', (req, res) => {
     fb.checkAuth(res, () => {
         var groupName = req.params.groupId;
         var chanName = req.params.chanId;
@@ -22,7 +22,7 @@ router.get('/:groupId/channel/:chanId', function (req, res) {
 });
 
 // push message to firebase db
-router.post('/:groupId/channel/:chanId', function (req, res, next) {
+router.post('/:groupId/channel/:chanId', (req, res, next) => {
     fb.checkAuth(res, () => {
         var groupName = req.params.groupId;
         var chanName = req.params.chanId;

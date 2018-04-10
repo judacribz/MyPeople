@@ -4,7 +4,7 @@ const express = require('express');
 var router = express.Router();
 
 /* GET login page. */
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
 	res.render('login', {
 		title: 'Sign In | My People',
 		message: 'Sign in to your workspace'
@@ -18,9 +18,9 @@ router.post('/', function (req, res) {
 	var username = req.body.username;
 
 	/* Handle user login */
-	firebase.auth().signInWithEmailAndPassword(email, password).then(firebaseUser => {
+	firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
 		/* If user is successfully logged in, redirect them to the welcome page */
-		fb.onLoginSuccess(res, firebaseUser, '/welcome');
+		fb.onLoginSuccess(res, user, '/welcome');
 	}).catch(function (error) {
 		/* Display error if user login was incorrect or if user does not exist */
 		console.log(error.message);

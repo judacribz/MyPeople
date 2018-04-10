@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 var info = fb.getInfo();
 
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
     fb.checkAuth(res, () => {
 
         res.render('message', {

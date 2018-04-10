@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 var info = fb.getInfo();
 
-router.get('/:groupId', function (req, res) {
+router.get('/:groupId', (req, res) => {
     fb.checkAuth(res, () => {
         var groupName = req.params.groupId;
         var channelNames = fb.getChannels(groupName);

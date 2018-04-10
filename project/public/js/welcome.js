@@ -4,4 +4,11 @@ $(document).ready(function () {
 		firebase.auth().signOut();
 		window.location = '/';
 	});
+
+
+	$("a.list-group-item").click(select);
 });
+
+function select() {
+	$(this).toggleClass('list-group-select');
+}

@@ -1,12 +1,17 @@
-html, body {
-	background-color: #33CCFF;
+html,
+body {
+    background-color: #33CCFF;
     height: 100%;
     width: 100%;
     margin: auto;
 }
 
+h3 {
+    font-family: 'Lobster', cursive;
+}
+
 .top-div {
-	background-color: black;
+    background-color: black;
     height: 32%;
     width: inherit;
     margin: auto;
@@ -35,4 +40,17 @@ html, body {
 
 .navbar-inverse {
     background-color: black;
+}
+
+a.list-group-select,
+a.list-group-item:hover {
+    background-color: rgba(20, 85, 0);
+    color: #FFFFFF;
+}
+
+ul.list-group {
+    border: 2px solid black;
+    margin: 0 5em;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14pt;
 }

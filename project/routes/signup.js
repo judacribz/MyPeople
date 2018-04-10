@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
 });
 
 /* POST to Signup page */
-router.post('/', function (req, res) {
+router.post('/', (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
     var username = req.body.username;

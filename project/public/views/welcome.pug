@@ -15,17 +15,23 @@ html(lang="en")
 							a(id='logout')
 								span.glyphicon.glyphicon-log-out
 								| Logout
-
 			p
 				i Welcome #{user}
 
 		.inner-center-div
 			p
 				i Choose a workspace
-
 			each routeItem in [groupList, channelList]
+				if routeItem == groupList
+					h3.text-center Groups
+				else
+					h3.text-center Channels
 				ul.list-group
-					each listItem in routeItem
-						a(href='group/' + listItem).list-group-item.list-group-item-action= listItem
+					each listItem, index in routeItem
+						if routeItem == channelList
+							- var item = channelNames[index]
+						else
+							- var item = listItem
+						a(href='group/' + listItem).list-group-item.list-group-hover.text-center= item
 
 	include partials/scripts

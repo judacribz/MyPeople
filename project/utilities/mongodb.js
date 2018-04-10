@@ -5,7 +5,8 @@ const models = {
 const mongoose = require('mongoose');
 var User = mongoose.model('user', models.userSchema);
 var Group = mongoose.model('group', models.groupSchema);
-var newUser
+var newUser;
+
 module.exports = {
 
     // Adds user to mongodb
@@ -22,15 +23,15 @@ module.exports = {
                     user, {
                         multi: false
                     },
-                    function (error, numAffected) {
+                    (error, numAffected) => {
                         if (error || numAffected != 1) {
-                            console.log('Not updating user' + user.username);
+                            console.log('Not updating user ' + user.username);
                         }
-                    });
+                    })
             } else {
                 // save a new student
                 var newUser = new User(user);
-                newUser.save(function (error) {
+                newUser.save((error) => {
                     if (error) {
                         console.log('Unable to save user');
                     }
@@ -39,13 +40,15 @@ module.exports = {
         });
     },
 
-    getUsername: (uid) => {
-        User.find({
-            uid: uid
-        }, {
-            username: 1
-        }).then(function (results) {
-            return results;
-        });
-    }
+
+    // TODO: remove later if not used
+    // getUsername: (uid) => {
+    //     User.find({
+    //         uid: uid
+    //     }, {
+    //         username: 1
+    //     }).then(function (results) {
+    //         return results;
+    //     });
+    // }
 };
