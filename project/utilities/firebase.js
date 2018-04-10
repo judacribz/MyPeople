@@ -86,7 +86,7 @@ module.exports = {
             groupNames.push(groupShot.key);
 
             getChannels(groupShot.key).forEach((channelName) => {
-                channelNames.push(channelName);
+                channelNames.push(groupShot.key + '/channel/' + channelName);
             });
         });
 

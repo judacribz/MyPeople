@@ -61,10 +61,10 @@ const welcome = require(routes + '/welcome');
 
 app.use('/', index);
 app.use('/signup', signup);
-app.use('/group', group);
-app.use('/channel', channel);
 app.use('/message', message);
 app.use('/welcome', welcome);
+app.use('/group', group);
+app.use('/group', channel);
 
 app.use(session({
   genid: function (request) {
