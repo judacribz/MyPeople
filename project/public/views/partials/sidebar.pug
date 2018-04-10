@@ -1,7 +1,6 @@
 #Members.container-fluid
     h4#M MEMBERS
     ul#members.list-group
-        li.list-group-item DIKACHI
-        li.list-group-item MIRICAL
-        li.list-group-item SHERON
-        li
+        each listItem in messageList
+            if user.localeCompare(listItem) != 0
+                li.list-group-item= listItem

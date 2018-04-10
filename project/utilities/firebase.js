@@ -2,7 +2,6 @@ const mongodb = require("../utilities/mongodb");
 const firebase = require("firebase");
 const fbConfig = require('../config/firebase.config');
 
-var fbInitialized = false;
 var fbDatabase;
 
 function getChannels(groupName) {
@@ -18,15 +17,13 @@ function getChannels(groupName) {
 module.exports = {
     firebase: firebase,
 
-    fbInitialized: fbInitialized,
-
     // initializes firebase
     setupFirebase: function () {
         firebase.initializeApp(fbConfig);
-        fbInitialized = true;
         fbDatabase = firebase.database();
     },
 
+    //TODO: remove if not used later
     /* Check if the authentication state has been changed, either if the user is logged in or not */
     onAuthStateChanged: () => {
         firebase.auth().onAuthStateChanged(firebaseUser => {

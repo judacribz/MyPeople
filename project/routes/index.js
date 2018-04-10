@@ -16,6 +16,7 @@ router.post('/', function (req, res) {
 	var email = req.body.email;
 	var password = req.body.password;
 	var username = req.body.username;
+
 	/* Handle user login */
 	firebase.auth().signInWithEmailAndPassword(email, password).then(firebaseUser => {
 		/* If user is successfully logged in, redirect them to the welcome page */
