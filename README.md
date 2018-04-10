@@ -7,8 +7,10 @@ Note: Do setup and run from the project directory
 `npm install`  
 
 ## Run:
-`npm run mongod` -> Creates datbase path at `data/database` and starts mongo    
-`npm start` -> runs `nodemon app`
+`npm run mongod`  
+###### -> Creates datbase path at `data/database` and starts mongo  
+`npm start`  
+###### -> runs `nodemon app`  
 
 ## [Design](design/):
 [Mockup](design/webProj.pdf)  
