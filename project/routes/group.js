@@ -11,8 +11,9 @@ router.get('/:groupId', function (req, res) {
         res.render('group', {
             title: groupName + ' | My People',
             groupList: info.groupNames,
-            channelList: channelNames,
-            messageList: info.usernames
+            channelList: info.channelNames,
+            messageList: info.usernames,
+            groupId: groupName
         });
     });
 });

@@ -31,7 +31,7 @@ app.set('host', "localhost");
 const url = 'http://' + app.get('host') + ':' + app.get('port') + '/';
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'pug');
 
 //Compress all routes

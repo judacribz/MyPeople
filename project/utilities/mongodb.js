@@ -24,7 +24,7 @@ module.exports = {
                     },
                     function (error, numAffected) {
                         if (error || numAffected != 1) {
-                            console.log('Not updating user' + error);
+                            console.log('Not updating user' + user.username);
                         }
                     });
             } else {
@@ -39,9 +39,11 @@ module.exports = {
         });
     },
 
-    getUsernames: () => {
-        User.find({}, {
-            username: 1,
+    getUsername: (uid) => {
+        User.find({
+            uid: uid
+        }, {
+            username: 1
         }).then(function (results) {
             return results;
         });

@@ -111,7 +111,7 @@ module.exports = {
                     email: userShot.val().email
                 };
 
-                mongodb.loadUser(user);
+                mongodb.createUser(user);
             });
 
         });

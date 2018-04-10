@@ -1,9 +1,8 @@
 $(document).ready(function () {
-	const fbPath = 'https://mypeople-5d5e0.firebaseio.com';
 	var fbDatabase = firebase.database();
 	// TODO: group name and channel name hardcoded, make deterministic
 	var messages = fbDatabase
-		.ref('groups/HackerGroup-2018/channels/events/messages/');
+		.ref('groups/' + $("#group").text() + '/channels/' + $("#channel").text() + '/messages/');
 
 	var username;
 	messages

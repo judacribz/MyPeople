@@ -9,12 +9,12 @@ nav.navbar.navbar-default
                             if groupList !== undefined
                                 each listItem in groupList
                                     li     
-                                        a(href='/' + listItem).col-xs-12.text-center.groupList= listItem
+                                        a(href=path + '/' + listItem).col-xs-12.text-center.groupList= listItem
                         else if name == "Channels"
                             if channelList !== undefined
                                 each listItem in channelList
                                     li     
-                                        a(href='/' +listItem).col-xs-12.text-center.channelList= listItem
+                                        a(href='/group/' + listItem).col-xs-12.text-center.channelList= listItem.split('/')[0] + " > " + listItem.split('/')[2]
                         else if name == "Messages"
                             if messageList !== undefined
                                 each listItem in messageList
