@@ -41,9 +41,6 @@ a {
     color: white;
 }
 
-#groupContent,
-#chatArea {}
-
 #chatArea {
     background-color: #7FFFD4;
     height: 500px;

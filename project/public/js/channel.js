@@ -2,7 +2,7 @@ $(document).ready(function () {
 	var fbDatabase = firebase.database();
 	// TODO: group name and channel name hardcoded, make deterministic
 	var messages = fbDatabase
-		.ref('groups/' + $("#group").text() + '/channels/' + $("#channel").text() + '/messages/');
+		.ref('groups/' + $("#group").text().split(' > ')[0] + '/channels/' + $("#group").text().split(' > ')[1] + '/messages/');
 
 	var username;
 	messages
