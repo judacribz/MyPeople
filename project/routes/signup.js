@@ -7,7 +7,8 @@ var router = express.Router();
 /* GET Signup page. */
 router.get('/', function (req, res) {
     res.render('signup', {
-        title: 'Get Started | My People'
+        title: 'Get Started | My People',
+        message: 'Signup to myPeople'
     });
 });
 

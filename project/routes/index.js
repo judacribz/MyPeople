@@ -6,7 +6,8 @@ var router = express.Router();
 /* GET login page. */
 router.get('/', function (req, res) {
 	res.render('login', {
-		title: 'Sign In | My People'
+		title: 'Sign In | My People',
+		message: 'Sign in to your workspace'
 	});
 });
 
