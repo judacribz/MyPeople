@@ -1,0 +1,19 @@
+a.list-group-select,
+a.list-group-item:hover {
+    background-color: rgba(20, 85, 0);
+    color: #FFFFFF;
+}
+
+/* a {
+    width: auto;
+    max-width: 30em;
+}
+
+*/
+
+ul.route-group {
+    border: 2px solid black;
+    margin: 0 5em;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 14pt;
+}

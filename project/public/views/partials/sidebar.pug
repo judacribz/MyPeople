@@ -2,5 +2,5 @@
     h4#M MEMBERS
     ul#members.list-group
         each listItem in messageList
-            if user.localeCompare(listItem) != 0
+            if user != listItem
                 li.list-group-item= listItem

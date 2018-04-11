@@ -3,6 +3,7 @@ extends layouts/auth
 append content_scripts
 	script(src='/js/welcome.js')
 	link(rel="stylesheet", href="/css/welcome.css")
+	link(rel="stylesheet", href="/css/common.css")
 
 block content_extra
 	h3#welcomeMsg.text-center.text-center.col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
@@ -20,7 +21,7 @@ block content_main
 				h3.text-center Groups
 			else
 				h3.text-center Channels
-			ul.list-group
+			ul.list-group.route-group
 				each listItem, index in routeItem
 					if routeItem == channelList
 						- var item = channelNames[index]

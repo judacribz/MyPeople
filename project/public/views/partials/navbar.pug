@@ -1,3 +1,5 @@
+link(rel="stylesheet" href="/css/common.css")
+
 nav.navbar.navbar-default
     ul.nav.navbar-nav
         each path, name in {"Groups":'/group', "Channels":"/channel","Messages":"/"}
@@ -8,15 +10,12 @@ nav.navbar.navbar-default
                         if name == "Groups"
                             if groupList !== undefined
                                 each listItem in groupList
-                                    li     
-                                        a(href=path + '/' + listItem).col-xs-12.text-center.groupList= listItem
+                                    a(href=path + '/' + listItem).col-xs-12.list-group-item.list-group-hover.text-center= listItem
                         else if name == "Channels"
                             if channelList !== undefined
                                 each listItem in channelList
-                                    li     
-                                        a(href='/group/' + listItem).col-xs-12.text-center.channelList= listItem.split('/')[0] + " > " + listItem.split('/')[2]
+                                    a(href='/group/' + listItem).col-xs-12.list-group-item.list-group-hover.text-center= listItem.split('/')[0] + " > " + listItem.split('/')[2]
                         else if name == "Messages"
                             if messageList !== undefined
                                 each listItem in messageList
-                                    li     
-                                      a(href='/message').col-xs-12.text-center.messageList= listItem
+                                    a(href='/message').col-xs-12.list-group-item.list-group-hover.text-center= listItem
