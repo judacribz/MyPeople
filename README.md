@@ -1,7 +1,7 @@
 # MyPeople
-## judacribz (Sheron Balasingam - 100504990)
-## xXGirl-Computer-ScientistXx ()
-## d123kalu ()
+### judacribz (Sheron Balasingam - 100504990)
+### xXGirl-Computer-ScientistXx ()
+### d123kalu ()
 
 Note: Do setup and run from the project directory  
 
