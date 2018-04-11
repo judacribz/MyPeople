@@ -1,6 +1,6 @@
 # MyPeople
 ### [judacribz](https://github.com/judacribz) (Sheron Balasingam - 100504990)
-### [xXGirl-Computer-ScientistXx] (Mirical Williams-Causton - 100552082)
+### xXGirl-Computer-ScientistXx (Mirical Williams-Causton - 100552082)
 ### d123kalu ()
 
 Note: Do setup and run from the project directory  
