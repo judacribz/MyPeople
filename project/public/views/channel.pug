@@ -1,18 +1,18 @@
 extends layouts/main
 
 append content_scripts
-	link(rel="stylesheet" href="/css/main.css")
+	link(rel="stylesheet" href="/css/channel.css")
 	script(src='/js/channel.js')
 
 block content_main
-	include partials/sidebar
-	h2#group #{groupId} > #{chanId}
-	h4 
-	#chatArea
-		#bottom
-			#attachments
-			form.form-inline(method="post",action="/group/" + groupId + "/channel/" + chanId)
-				.form-group
-					textarea(id="message",name='message', style='width:1500px; height:100px;')
-					br
-					input(type='submit')
+		p#currUser= user
+		h2.col-xs-12.col-sm-10.col-sm-offset-2#group #{groupId} > #{chanId}
+		
+		#messageArea.col-xs-12.col-sm-10.col-sm-offset-2
+			#messageDisplay
+
+		#chatArea.col-xs-offset-2.col-xs-10
+			form(method="post",action="/group/" + groupId + "/channel/" + chanId)
+				textarea(id="message",name='message').col-xs-11
+				input.btn.btn-success(type='submit').col-xs-1
+					

@@ -1,0 +1,46 @@
+html,
+body {
+    background: darkturquoise;
+}
+
+#messageArea {
+    position: fixed;
+    width: 100%;
+    height: 40em;
+    margin-top: 5em;
+    margin-bottom: 10em;
+}
+
+#messageDisplay {
+    height: 100%;
+    width: 85%;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+#messageDisplay p {
+    margin-right: 2em;
+}
+
+#chatArea {
+    position: fixed;
+    bottom: 0;
+}
+
+input.btn.btn-success {
+    height: 10em;
+}
+
+textarea {
+    height: 10em;
+}
+
+h3 {
+    padding: 0 1em;
+    font-family: 'Lobster', cursive;
+}
+
+p {
+    padding: 0 2em;
+    font-family: 'Do Hyeon', sans-serif;
+}

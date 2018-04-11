@@ -6,7 +6,7 @@ nav.navbar.navbar-default
             li.dropdown.col-xs-4.text-center
                 a.dropdown-toggle(data-toggle=".dropdown-menu")= name
                 span.caret
-                    ul.dropdown-menu.col-xs-12
+                    ul.dropdown-menu.col-xs-12.menu-group
                         if name == "Groups"
                             if groupList !== undefined
                                 each listItem in groupList

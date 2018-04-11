@@ -1,16 +1,14 @@
 doctype html
 html(lang="en")
 	include ../partials/head
-	link(rel="stylesheet" href="/css/main.css")
-	script(src='/js/main.js')
+
 	block content_scripts
 
 	body
 		include ../partials/navbar
 
-		#content
-		#middle
-			block content_main
+		include ../partials/sidebar
+		block content_main
 
 		
 		include ../partials/scripts

@@ -4,16 +4,51 @@ a.list-group-item:hover {
     color: #FFFFFF;
 }
 
-/* a {
-    width: auto;
-    max-width: 30em;
-}
-
-*/
-
+ul.menu-group,
 ul.route-group {
     border: 2px solid black;
-    margin: 0 5em;
     font-family: 'Do Hyeon', sans-serif;
     font-size: 14pt;
+}
+
+ul.route-group {
+    margin: 0 5em;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav {
+    position: absolute;
+    width: 100%;
+    background-color: black;
+    color: white;
+    min-width: 50em;
+}
+
+.navbar-nav li .dropdown-toggle {
+    width: 10em;
+    background-color: #000;
+    border: 2px #FFF solid;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: -0.8em;
+}
+
+ul.dropdown-menu {
+    margin: -0.3em;
+}
+
+#M {
+    color: white;
+}
+
+#members {
+    background-color: #333333;
+    position: fixed;
+    margin-top: 0.6em;
+    height: 100%;
 }

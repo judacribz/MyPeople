@@ -4,9 +4,14 @@ $(document).ready(function () {
 	var messages = fbDatabase
 		.ref('groups/' + $("#group").text().split(' > ')[0] + '/channels/' + $("#group").text().split(' > ')[1] + '/messages/');
 
+	// $("." + $("#currUser").text()).addClass("text-right");
+
+	var userClass = $("#currUser").text();
+
 	var username;
 	messages
-		.limitToLast(10)
+		.limitToLast(20)
+		.orderByKey()
 		.on('child_added', function (userShot) {
 			var users = fbDatabase
 				.ref('users/' + userShot.val().uid);
@@ -17,9 +22,17 @@ $(document).ready(function () {
 					username = messageShot.val().username;
 				}
 
-				$("#chatArea")
-					.append($(document.createElement("p"))
-						.text(username + " says: " + userShot.val().content));
+				$("#messageArea #messageDisplay")
+					.append($(document.createElement("h3")).addClass(username, 'text-left').text(username))
+					.append($(document.createElement("p")).addClass(username, 'text-left').text(userShot.val().content));
+
+				var disp = document.getElementById('messageDisplay');
+				disp.scrollTop = disp.scrollHeight;
+
+				$('.' + userClass).addClass('text-right');
+
 			});
+
 		});
+
 });

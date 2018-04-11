@@ -1,9 +1,5 @@
 extends layouts/main
 
-block content_scripts
-	//- script(type='text/javascript', src='js/group.js')
-
 block content_main
-	include partials/sidebar
-	#chatArea
-		p
+	#chatArea.col-xs-12.col-sm-10
+		h3= groupId
