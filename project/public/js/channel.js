@@ -11,7 +11,7 @@ $(document).ready(function () {
 	var username;
 	messages
 		.limitToLast(20)
-		.orderByKey()
+		.orderByKey() // order by timestamp
 		.on('child_added', function (userShot) {
 			var users = fbDatabase
 				.ref('users/' + userShot.val().uid);
@@ -35,4 +35,22 @@ $(document).ready(function () {
 
 		});
 
+	$('form').submit((event) => {
+		clearText(event);
+		window.onbeforeunload = function () {
+			return "";
+		}
+	});
+
 });
+
+async function clearText(event) {
+	await sleep(2000);
+	$('textarea').val('');
+
+
+}
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}

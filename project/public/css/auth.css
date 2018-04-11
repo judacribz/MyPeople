@@ -39,3 +39,7 @@ body {
 .navbar-inverse {
     background-color: #000;
 }
+
+img {
+    z-index: 999999;
+}
