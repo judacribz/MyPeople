@@ -1,5 +1,5 @@
 # MyPeople
-### judacribz (Sheron Balasingam - 100504990)
+### [judacribz](https://github.com/judacribz) (Sheron Balasingam - 100504990)
 ### xXGirl-Computer-ScientistXx ()
 ### d123kalu ()
 
